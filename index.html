@@ -40,7 +40,7 @@
   <style>
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    body { background: #FDF8F0; }
+    body { background: #FDF8F0; background-image: radial-gradient(circle, #D4C4B0 0.5px, transparent 0.5px); background-size: 24px 24px; }
     .loading { overflow: hidden !important; }
     ::selection { background: #C8926E; color: #fff; }
     ::-webkit-scrollbar { width: 6px; }
@@ -67,6 +67,15 @@
     /* Marquee */
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .marquee-track { animation: marquee 30s linear infinite; display: flex; width: max-content; }
+
+    /* Marquee scanline */
+    .marquee-scanline { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, transparent 0%, transparent 48%, rgba(200,146,110,0.06) 50%, transparent 52%, transparent 100%); background-size: 100% 40px; animation: scanline 3s linear infinite; }
+    @keyframes scanline { 0% { background-position: 0 0; } 100% { background-position: 0 40px; } }
+
+    /* KPI cards */
+    .kpi-card { position: relative; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); border: 1px solid #EDE4D8; border-top: 2px solid #C8926E; border-radius: 0.75rem; padding: 1rem 0.75rem; }
+    .kpi-card::after { content: ''; position: absolute; top: -2px; left: 0; width: 100%; height: 2px; background: #C8926E; animation: kpi-pulse 2.5s ease-in-out infinite; border-radius: 2px 2px 0 0; }
+    @keyframes kpi-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
     /* Title clip reveal */
     .title-reveal { clip-path: inset(0 0 100% 0); }
@@ -154,11 +163,23 @@
             <a href="#projects" class="nav-link px-8 py-3.5 rounded-full bg-navy text-white font-semibold hover:bg-accent transition-all shadow-lg shadow-navy/15" data-magnetic>View Projects</a>
             <a href="#contact" class="nav-link px-8 py-3.5 rounded-full border-2 border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all" data-magnetic>Get In Touch</a>
           </div>
-          <div class="gs-reveal grid grid-cols-4 gap-6 mt-14">
-            <div class="text-center"><div class="text-3xl font-bold text-navy counter" data-target="3.84" data-decimals="2">0</div><div class="text-xs text-muted uppercase tracking-widest mt-1">GPA</div></div>
-            <div class="text-center"><div class="text-3xl font-bold text-navy counter" data-target="500" data-suffix="+">0</div><div class="text-xs text-muted uppercase tracking-widest mt-1">Records/Mo</div></div>
-            <div class="text-center"><div class="text-3xl font-bold text-navy">$75K+</div><div class="text-xs text-muted uppercase tracking-widest mt-1">Budget Mgd</div></div>
-            <div class="text-center"><div class="text-3xl font-bold text-navy">5</div><div class="text-xs text-muted uppercase tracking-widest mt-1">Dean's List</div></div>
+          <div class="gs-reveal grid grid-cols-4 gap-4 mt-14">
+            <div class="kpi-card text-center">
+              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">GPA</div>
+              <div class="text-2xl font-bold text-navy counter" data-target="3.84" data-decimals="2">0</div>
+            </div>
+            <div class="kpi-card text-center">
+              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Records/Mo</div>
+              <div class="text-2xl font-bold text-navy counter" data-target="500" data-suffix="+">0</div>
+            </div>
+            <div class="kpi-card text-center">
+              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Budget Mgd</div>
+              <div class="text-2xl font-bold text-navy">$75K+</div>
+            </div>
+            <div class="kpi-card text-center">
+              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Dean's List</div>
+              <div class="text-2xl font-bold text-navy">5</div>
+            </div>
           </div>
         </div>
         <div class="gs-reveal flex justify-center md:justify-end">
@@ -184,31 +205,32 @@
     </section>
 
     <!-- MARQUEE -->
-    <section class="py-6 bg-navy overflow-hidden">
+    <section class="py-6 bg-navy overflow-hidden relative">
+      <div class="marquee-scanline"></div>
       <div class="marquee-track">
         <div class="flex items-center gap-8 px-4 text-cream/40 text-base font-mono uppercase tracking-widest whitespace-nowrap">
-          <span>Operations Strategy</span><span class="text-accent">&#9670;</span>
-          <span>Business Analytics</span><span class="text-accent">&#9670;</span>
-          <span>Process Engineering</span><span class="text-accent">&#9670;</span>
-          <span>Data Visualization</span><span class="text-accent">&#9670;</span>
-          <span>SQL &amp; Python</span><span class="text-accent">&#9670;</span>
-          <span>Tableau &amp; Power BI</span><span class="text-accent">&#9670;</span>
-          <span>Project Management</span><span class="text-accent">&#9670;</span>
-          <span>Machine Learning</span><span class="text-accent">&#9670;</span>
-          <span>Sustainability</span><span class="text-accent">&#9670;</span>
-          <span>Lean &amp; Agile</span><span class="text-accent">&#9670;</span>
+          <span>Operations Strategy</span><span class="text-accent/60">▸</span>
+          <span>Business Analytics</span><span class="text-accent/60">▸</span>
+          <span>Process Engineering</span><span class="text-accent/60">▸</span>
+          <span>Data Visualization</span><span class="text-accent/60">▸</span>
+          <span>SQL &amp; Python</span><span class="text-accent/60">▸</span>
+          <span>Tableau &amp; Power BI</span><span class="text-accent/60">▸</span>
+          <span>Project Management</span><span class="text-accent/60">▸</span>
+          <span>Machine Learning</span><span class="text-accent/60">▸</span>
+          <span>Sustainability</span><span class="text-accent/60">▸</span>
+          <span>Lean &amp; Agile</span><span class="text-accent/60">▸</span>
         </div>
         <div class="flex items-center gap-8 px-4 text-cream/40 text-base font-mono uppercase tracking-widest whitespace-nowrap" aria-hidden="true">
-          <span>Operations Strategy</span><span class="text-accent">&#9670;</span>
-          <span>Business Analytics</span><span class="text-accent">&#9670;</span>
-          <span>Process Engineering</span><span class="text-accent">&#9670;</span>
-          <span>Data Visualization</span><span class="text-accent">&#9670;</span>
-          <span>SQL &amp; Python</span><span class="text-accent">&#9670;</span>
-          <span>Tableau &amp; Power BI</span><span class="text-accent">&#9670;</span>
-          <span>Project Management</span><span class="text-accent">&#9670;</span>
-          <span>Machine Learning</span><span class="text-accent">&#9670;</span>
-          <span>Sustainability</span><span class="text-accent">&#9670;</span>
-          <span>Lean &amp; Agile</span><span class="text-accent">&#9670;</span>
+          <span>Operations Strategy</span><span class="text-accent/60">▸</span>
+          <span>Business Analytics</span><span class="text-accent/60">▸</span>
+          <span>Process Engineering</span><span class="text-accent/60">▸</span>
+          <span>Data Visualization</span><span class="text-accent/60">▸</span>
+          <span>SQL &amp; Python</span><span class="text-accent/60">▸</span>
+          <span>Tableau &amp; Power BI</span><span class="text-accent/60">▸</span>
+          <span>Project Management</span><span class="text-accent/60">▸</span>
+          <span>Machine Learning</span><span class="text-accent/60">▸</span>
+          <span>Sustainability</span><span class="text-accent/60">▸</span>
+          <span>Lean &amp; Agile</span><span class="text-accent/60">▸</span>
         </div>
       </div>
     </section>
@@ -334,8 +356,8 @@
       <div id="projects-horizontal" class="overflow-hidden">
         <div class="projects-track px-6 md:px-12">
           <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
-            <div class="aspect-[16/9] bg-gradient-to-br from-accent/15 via-sand to-warm flex items-center justify-center">
-              <svg class="w-14 h-14 text-accent/50 group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 0 0 .5-9.99A7 7 0 1 0 3 15z"/></svg>
+            <div class="aspect-[16/9] bg-gradient-to-br from-accent/5 to-warm relative overflow-hidden">
+              <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="flow"></canvas>
             </div>
             <div class="p-7">
               <div class="flex justify-between items-start mb-3">
@@ -353,8 +375,8 @@
           </div>
 
           <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
-            <div class="aspect-[16/9] bg-gradient-to-br from-green-100 via-sand to-warm flex items-center justify-center">
-              <svg class="w-14 h-14 text-green-400/60 group-hover:text-green-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            <div class="aspect-[16/9] bg-gradient-to-br from-green-50 to-warm relative overflow-hidden">
+              <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="neural"></canvas>
             </div>
             <div class="p-7">
               <div class="flex justify-between items-start mb-3">
@@ -372,8 +394,8 @@
           </div>
 
           <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
-            <div class="aspect-[16/9] bg-gradient-to-br from-blue-100 via-sand to-warm flex items-center justify-center">
-              <svg class="w-14 h-14 text-blue-400/50 group-hover:text-blue-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            <div class="aspect-[16/9] bg-gradient-to-br from-blue-50 to-warm relative overflow-hidden">
+              <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="chart"></canvas>
             </div>
             <div class="p-7">
               <div class="flex justify-between items-start mb-3">
@@ -407,11 +429,35 @@
               <span class="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
               Data Analysis
             </h3>
-            <div class="grid grid-cols-2 gap-x-6 gap-y-3">
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>Python</span><span>85%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-accent rounded-full" data-width="85"></div></div></div>
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>SQL</span><span>90%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-accent rounded-full" data-width="90"></div></div></div>
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>R</span><span>60%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-accent/60 rounded-full" data-width="60"></div></div></div>
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>Adv. Excel / VBA</span><span>92%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-accent rounded-full" data-width="92"></div></div></div>
+            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="85">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#C8926E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">Python</span><span class="text-xs text-muted ml-1.5">85%</span></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="90">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#C8926E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">SQL</span><span class="text-xs text-muted ml-1.5">90%</span></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="60">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#C8926E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">R</span><span class="text-xs text-muted ml-1.5">60%</span></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="92">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#C8926E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">Excel / VBA</span><span class="text-xs text-muted ml-1.5">92%</span></div>
+              </div>
             </div>
           </div>
           <!-- Process Tools -->
@@ -433,10 +479,28 @@
               <span class="w-7 h-7 rounded-lg bg-green-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
               Visualization
             </h3>
-            <div class="space-y-3">
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>Tableau</span><span>88%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-green-400 rounded-full" data-width="88"></div></div></div>
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>Power BI</span><span>85%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-green-400 rounded-full" data-width="85"></div></div></div>
-              <div><div class="flex justify-between text-sm text-muted mb-1"><span>Salesforce</span><span>78%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-bar h-full bg-green-400/70 rounded-full" data-width="78"></div></div></div>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="88">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">Tableau</span><span class="text-xs text-muted ml-1.5">88%</span></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="85">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">Power BI</span><span class="text-xs text-muted ml-1.5">85%</span></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="skill-gauge w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36" data-percent="78">
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EDE4D8" stroke-width="2.5"/>
+                  <circle class="gauge-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round" opacity="0.7"/>
+                </svg>
+                <div><span class="text-sm text-navy font-medium">Salesforce</span><span class="text-xs text-muted ml-1.5">78%</span></div>
+              </div>
             </div>
           </div>
           <!-- Frameworks — span 2 -->
@@ -590,37 +654,86 @@
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 30;
 
-    const N = 150;
-    const geo = new THREE.BufferGeometry();
-    const pos = new Float32Array(N * 3);
-    const colors = new Float32Array(N * 3);
-    const vel = [];
-    const c1 = new THREE.Color(0xC8926E), c2 = new THREE.Color(0x1A2332), c3 = new THREE.Color(0x3B82F6);
-    for (let i = 0; i < N; i++) {
-      pos[i*3]=(Math.random()-0.5)*70; pos[i*3+1]=(Math.random()-0.5)*70; pos[i*3+2]=(Math.random()-0.5)*40;
-      vel.push({x:(Math.random()-0.5)*0.008,y:(Math.random()-0.5)*0.008,z:(Math.random()-0.5)*0.004});
-      const c = [c1,c2,c3][Math.floor(Math.random()*3)];
-      colors[i*3]=c.r; colors[i*3+1]=c.g; colors[i*3+2]=c.b;
+    // --- DATA PIPELINE NETWORK ---
+    // 5 columns representing pipeline stages
+    const colColors = [
+      new THREE.Color(0xC8926E), // source (accent)
+      new THREE.Color(0x3B82F6), // transform (blue)
+      new THREE.Color(0x1A2332), // process (navy)
+      new THREE.Color(0x3B82F6), // aggregate (blue)
+      new THREE.Color(0x22C55E), // output (green)
+    ];
+    const colX = [-22, -10, 2, 14, 25];
+    const colCounts = [5, 7, 8, 6, 4];
+    const nodes = [];
+    const nodePhases = [];
+
+    colCounts.forEach((count, ci) => {
+      for (let i = 0; i < count; i++) {
+        const spread = 28;
+        const y = (i - (count - 1) / 2) * (spread / count);
+        const x = colX[ci] + (Math.random() - 0.5) * 5;
+        const z = (Math.random() - 0.5) * 8;
+        nodes.push({ x, y, z, col: ci });
+        nodePhases.push(Math.random() * Math.PI * 2);
+      }
+    });
+
+    // Build edges: each node connects to 1-2 random nodes in next column
+    const edges = [];
+    let nodeOffset = 0;
+    for (let ci = 0; ci < colCounts.length - 1; ci++) {
+      const nextOffset = nodeOffset + colCounts[ci];
+      for (let i = 0; i < colCounts[ci]; i++) {
+        const srcIdx = nodeOffset + i;
+        const numEdges = 1 + Math.floor(Math.random() * 2);
+        const used = new Set();
+        for (let e = 0; e < numEdges; e++) {
+          let tgtLocal = Math.floor(Math.random() * colCounts[ci + 1]);
+          if (used.has(tgtLocal) && colCounts[ci + 1] > 1) tgtLocal = (tgtLocal + 1) % colCounts[ci + 1];
+          used.add(tgtLocal);
+          edges.push([srcIdx, nextOffset + tgtLocal]);
+        }
+      }
+      nodeOffset += colCounts[ci];
     }
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ size: 0.07, transparent: true, opacity: 0.4, sizeAttenuation: true, vertexColors: true })));
 
-    const shapes = [];
-    const add = (g, c, p, s) => {
-      const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: c, wireframe: true, transparent: true, opacity: 0.06 }));
-      m.position.set(...p); m.scale.setScalar(s);
-      m.userData = { rx:(Math.random()-0.5)*0.0015, ry:(Math.random()-0.5)*0.0015, fs:Math.random()*0.4+0.3, fa:Math.random()*0.4+0.2, by:p[1] };
-      scene.add(m); shapes.push(m);
-    };
-    add(new THREE.IcosahedronGeometry(3,1), 0xC8926E, [-14,8,-10], 1);
-    add(new THREE.OctahedronGeometry(2.5,0), 0x3B82F6, [16,-6,-14], 1);
-    add(new THREE.TorusGeometry(2,0.5,8,24), 0x22C55E, [-10,-10,-8], 1);
+    // Node points
+    const totalNodes = nodes.length;
+    const nodeGeo = new THREE.BufferGeometry();
+    const nodePos = new Float32Array(totalNodes * 3);
+    const nodeColors = new Float32Array(totalNodes * 3);
+    nodes.forEach((n, i) => {
+      nodePos[i*3] = n.x; nodePos[i*3+1] = n.y; nodePos[i*3+2] = n.z;
+      const c = colColors[n.col];
+      nodeColors[i*3] = c.r; nodeColors[i*3+1] = c.g; nodeColors[i*3+2] = c.b;
+    });
+    nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
+    nodeGeo.setAttribute('color', new THREE.BufferAttribute(nodeColors, 3));
+    scene.add(new THREE.Points(nodeGeo, new THREE.PointsMaterial({ size: 0.2, transparent: true, opacity: 0.5, sizeAttenuation: true, vertexColors: true })));
 
-    const lGeo = new THREE.BufferGeometry();
-    const lPos = new Float32Array(N*6);
-    lGeo.setAttribute('position', new THREE.BufferAttribute(lPos, 3));
-    scene.add(new THREE.LineSegments(lGeo, new THREE.LineBasicMaterial({ color: 0xC8926E, transparent: true, opacity: 0.025 })));
+    // Edge lines (static topology)
+    const edgeGeo = new THREE.BufferGeometry();
+    const edgePos = new Float32Array(edges.length * 6);
+    edges.forEach(([s, t], i) => {
+      edgePos[i*6] = nodes[s].x; edgePos[i*6+1] = nodes[s].y; edgePos[i*6+2] = nodes[s].z;
+      edgePos[i*6+3] = nodes[t].x; edgePos[i*6+4] = nodes[t].y; edgePos[i*6+5] = nodes[t].z;
+    });
+    edgeGeo.setAttribute('position', new THREE.BufferAttribute(edgePos, 3));
+    scene.add(new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({ color: 0xC8926E, transparent: true, opacity: 0.04 })));
+
+    // Data packets (flowing dots along edges)
+    const packetCount = edges.length;
+    const packetGeo = new THREE.BufferGeometry();
+    const packetPos = new Float32Array(packetCount * 3);
+    const packetT = new Float32Array(packetCount);
+    const packetSpeed = new Float32Array(packetCount);
+    for (let i = 0; i < packetCount; i++) {
+      packetT[i] = Math.random(); // stagger start
+      packetSpeed[i] = 0.002 + Math.random() * 0.004;
+    }
+    packetGeo.setAttribute('position', new THREE.BufferAttribute(packetPos, 3));
+    scene.add(new THREE.Points(packetGeo, new THREE.PointsMaterial({ size: 0.12, transparent: true, opacity: 0.75, sizeAttenuation: true, color: 0xC8926E })));
 
     let mouse = {x:0, y:0}, scrollY = 0;
     document.addEventListener('mousemove', e => { mouse.x=(e.clientX/window.innerWidth)*2-1; mouse.y=-(e.clientY/window.innerHeight)*2+1; });
@@ -630,32 +743,47 @@
     (function animate() {
       requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
-      const p = geo.attributes.position.array;
-      for (let i=0;i<N;i++) {
-        p[i*3]+=vel[i].x; p[i*3+1]+=vel[i].y; p[i*3+2]+=vel[i].z;
-        if(Math.abs(p[i*3])>35) vel[i].x*=-1;
-        if(Math.abs(p[i*3+1])>35) vel[i].y*=-1;
-        if(Math.abs(p[i*3+2])>20) vel[i].z*=-1;
-      }
-      geo.attributes.position.needsUpdate=true;
-      let li=0;
-      for(let i=0;i<Math.min(30,N);i++) for(let j=i+1;j<Math.min(30,N);j++){
-        const dx=p[i*3]-p[j*3],dy=p[i*3+1]-p[j*3+1],dz=p[i*3+2]-p[j*3+2];
-        if(dx*dx+dy*dy+dz*dz<200&&li<N){ lPos[li*6]=p[i*3];lPos[li*6+1]=p[i*3+1];lPos[li*6+2]=p[i*3+2];lPos[li*6+3]=p[j*3];lPos[li*6+4]=p[j*3+1];lPos[li*6+5]=p[j*3+2];li++; }
-      }
-      for(let i=li;i<N;i++){lPos[i*6]=lPos[i*6+1]=lPos[i*6+2]=lPos[i*6+3]=lPos[i*6+4]=lPos[i*6+5]=0;}
-      lGeo.attributes.position.needsUpdate=true;
-      const scrollFactor = 1 + scrollY * 2;
-      shapes.forEach(s=>{
-        s.rotation.x+=s.userData.rx*scrollFactor; s.rotation.y+=s.userData.ry*scrollFactor;
-        s.position.y=s.userData.by+Math.sin(t*s.userData.fs)*s.userData.fa + scrollY*5;
+
+      // Gentle node oscillation
+      const np = nodeGeo.attributes.position.array;
+      nodes.forEach((n, i) => {
+        np[i*3+1] = n.y + Math.sin(t * 0.5 + nodePhases[i]) * 0.3;
       });
-      camera.position.x+=(mouse.x*2.5-camera.position.x)*0.015;
-      camera.position.y+=(mouse.y*1.5-camera.position.y)*0.015;
-      camera.lookAt(0,0,0);
+      nodeGeo.attributes.position.needsUpdate = true;
+
+      // Update edge positions to follow oscillating nodes
+      const ep = edgeGeo.attributes.position.array;
+      edges.forEach(([s, tgt], i) => {
+        ep[i*6] = np[s*3]; ep[i*6+1] = np[s*3+1]; ep[i*6+2] = np[s*3+2];
+        ep[i*6+3] = np[tgt*3]; ep[i*6+4] = np[tgt*3+1]; ep[i*6+5] = np[tgt*3+2];
+      });
+      edgeGeo.attributes.position.needsUpdate = true;
+
+      // Animate data packets along edges
+      const pp = packetGeo.attributes.position.array;
+      for (let i = 0; i < packetCount; i++) {
+        packetT[i] += packetSpeed[i];
+        if (packetT[i] > 1) packetT[i] = 0;
+        const [s, tgt] = edges[i];
+        const lerp = packetT[i];
+        pp[i*3]   = np[s*3]   + (np[tgt*3]   - np[s*3])   * lerp;
+        pp[i*3+1] = np[s*3+1] + (np[tgt*3+1] - np[s*3+1]) * lerp;
+        pp[i*3+2] = np[s*3+2] + (np[tgt*3+2] - np[s*3+2]) * lerp;
+      }
+      packetGeo.attributes.position.needsUpdate = true;
+
+      // Camera parallax
+      camera.position.x += (mouse.x * 2.5 - camera.position.x) * 0.015;
+      camera.position.y += (mouse.y * 1.5 - camera.position.y) * 0.015;
+      camera.lookAt(0, scrollY * 5, 0);
       renderer.render(scene, camera);
     })();
-    window.addEventListener('resize', ()=>{ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight); });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
   </script>
 
   <!-- MAIN SCRIPT: Lenis + GSAP + Interactions -->
@@ -794,11 +922,13 @@
           });
         });
 
-        // Skill bars
-        document.querySelectorAll('.skill-bar').forEach(bar => {
-          gsap.to(bar, {
-            width: bar.dataset.width + '%', duration: 1.2, ease: 'power2.out',
-            scrollTrigger: { trigger: bar, start: 'top 90%' }
+        // Radial gauge fills
+        document.querySelectorAll('.gauge-fill').forEach(circle => {
+          const pct = parseFloat(circle.closest('.skill-gauge').dataset.percent);
+          gsap.to(circle, {
+            attr: { 'stroke-dasharray': pct + ' 100' },
+            duration: 1.4, ease: 'power2.out',
+            scrollTrigger: { trigger: circle, start: 'top 90%' }
           });
         });
 
@@ -831,6 +961,159 @@
             opacity: 0.9, duration: 0.6,
             scrollTrigger: { trigger: sec, start: 'top 85%', toggleActions: 'play none none none' }
           });
+        });
+      }
+
+      // --- PROJECT CANVAS VISUALIZATIONS ---
+      document.querySelectorAll('.project-viz').forEach(canvas => {
+        const ctx = canvas.getContext('2d');
+        const type = canvas.dataset.viz;
+        let running = false, raf;
+
+        const resize = () => {
+          const r = canvas.getBoundingClientRect();
+          canvas.width = r.width; canvas.height = r.height;
+        };
+        resize();
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting && !running) { running = true; animate(); }
+            else if (!e.isIntersecting && running) { running = false; cancelAnimationFrame(raf); }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(canvas);
+
+        let t = 0;
+        function animate() {
+          if (!running) return;
+          t += 0.008;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const w = canvas.width, h = canvas.height;
+
+          if (type === 'flow') drawFlow(ctx, w, h, t);
+          else if (type === 'neural') drawNeural(ctx, w, h, t);
+          else if (type === 'chart') drawChart(ctx, w, h, t);
+
+          raf = requestAnimationFrame(animate);
+        }
+      });
+
+      function drawFlow(ctx, w, h, t) {
+        const boxes = [
+          { x: w*0.08, y: h*0.45, label: 'SRC' },
+          { x: w*0.28, y: h*0.3, label: 'ETL' },
+          { x: w*0.48, y: h*0.5, label: 'SQL' },
+          { x: w*0.68, y: h*0.35, label: 'QA' },
+          { x: w*0.88, y: h*0.45, label: 'OUT' },
+        ];
+        const bw = w*0.1, bh = h*0.2;
+        // Draw connections
+        ctx.strokeStyle = 'rgba(200,146,110,0.2)'; ctx.lineWidth = 1.5;
+        for (let i = 0; i < boxes.length - 1; i++) {
+          ctx.beginPath();
+          ctx.moveTo(boxes[i].x + bw/2, boxes[i].y + bh/2);
+          ctx.lineTo(boxes[i+1].x + bw/2, boxes[i+1].y + bh/2);
+          ctx.stroke();
+        }
+        // Draw flowing dots
+        for (let i = 0; i < boxes.length - 1; i++) {
+          const progress = ((t * 1.5 + i * 0.25) % 1);
+          const sx = boxes[i].x + bw/2, sy = boxes[i].y + bh/2;
+          const ex = boxes[i+1].x + bw/2, ey = boxes[i+1].y + bh/2;
+          const dx = sx + (ex - sx) * progress, dy = sy + (ey - sy) * progress;
+          ctx.beginPath(); ctx.arc(dx, dy, 3, 0, Math.PI*2);
+          ctx.fillStyle = '#C8926E'; ctx.fill();
+          // Trail
+          const tp = Math.max(0, progress - 0.15);
+          const tx = sx + (ex - sx) * tp, ty = sy + (ey - sy) * tp;
+          ctx.beginPath(); ctx.arc(tx, ty, 2, 0, Math.PI*2);
+          ctx.fillStyle = 'rgba(200,146,110,0.3)'; ctx.fill();
+        }
+        // Draw boxes
+        boxes.forEach(b => {
+          ctx.fillStyle = 'rgba(253,248,240,0.9)'; ctx.strokeStyle = 'rgba(200,146,110,0.4)'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.roundRect(b.x, b.y, bw, bh, 6); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#8B95A5'; ctx.font = `${Math.max(9, w*0.022)}px "JetBrains Mono", monospace`;
+          ctx.textAlign = 'center'; ctx.fillText(b.label, b.x + bw/2, b.y + bh/2 + 4);
+        });
+      }
+
+      function drawNeural(ctx, w, h, t) {
+        const layers = [[0.15, [0.25, 0.45, 0.65]], [0.4, [0.2, 0.38, 0.55, 0.72]], [0.65, [0.3, 0.5, 0.7]], [0.88, [0.4, 0.6]]];
+        const nodes = layers.map(l => l[1].map(y => ({ x: w * l[0], y: h * y })));
+        // Draw edges
+        for (let i = 0; i < nodes.length - 1; i++) {
+          nodes[i].forEach(a => {
+            nodes[i+1].forEach(b => {
+              ctx.strokeStyle = 'rgba(34,197,94,0.1)'; ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            });
+          });
+        }
+        // Animated pulses along edges
+        for (let i = 0; i < nodes.length - 1; i++) {
+          nodes[i].forEach((a, ai) => {
+            nodes[i+1].forEach((b, bi) => {
+              const p = ((t * 1.2 + i * 0.3 + ai * 0.15 + bi * 0.1) % 1);
+              const px = a.x + (b.x - a.x) * p, py = a.y + (b.y - a.y) * p;
+              ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI*2);
+              ctx.fillStyle = `rgba(34,197,94,${0.6 * (1 - Math.abs(p - 0.5) * 2)})`; ctx.fill();
+            });
+          });
+        }
+        // Draw nodes
+        nodes.flat().forEach((n, i) => {
+          ctx.beginPath(); ctx.arc(n.x, n.y, 5, 0, Math.PI*2);
+          ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.fill();
+          ctx.strokeStyle = 'rgba(34,197,94,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
+        });
+      }
+
+      function drawChart(ctx, w, h, t) {
+        const cycle = (t * 0.4) % 1;
+        const barCount = 6;
+        const barW = w * 0.08;
+        const gap = (w * 0.7) / barCount;
+        const startX = w * 0.12;
+        const baseY = h * 0.82;
+        const maxH = h * 0.55;
+        const heights = [0.6, 0.8, 0.45, 0.9, 0.55, 0.75];
+        const growFactor = Math.min(1, cycle * 3);
+
+        // Grid lines
+        ctx.strokeStyle = 'rgba(59,130,246,0.06)'; ctx.lineWidth = 0.5;
+        for (let i = 0; i < 5; i++) {
+          const y = baseY - (maxH * (i + 1) / 5);
+          ctx.beginPath(); ctx.moveTo(startX - 10, y); ctx.lineTo(w * 0.9, y); ctx.stroke();
+        }
+
+        // Bars
+        heights.forEach((hPct, i) => {
+          const x = startX + i * gap;
+          const barH = maxH * hPct * growFactor;
+          ctx.fillStyle = `rgba(59,130,246,${0.15 + hPct * 0.2})`;
+          ctx.beginPath(); ctx.roundRect(x, baseY - barH, barW, barH, [3, 3, 0, 0]); ctx.fill();
+        });
+
+        // Line chart overlay
+        ctx.strokeStyle = 'rgba(59,130,246,0.6)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        const lineHeights = [0.5, 0.7, 0.4, 0.85, 0.6, 0.8];
+        lineHeights.forEach((hPct, i) => {
+          const x = startX + i * gap + barW / 2;
+          const y = baseY - maxH * hPct * growFactor;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        // Line dots
+        lineHeights.forEach((hPct, i) => {
+          const x = startX + i * gap + barW / 2;
+          const y = baseY - maxH * hPct * growFactor;
+          ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2);
+          ctx.fillStyle = '#3B82F6'; ctx.fill();
         });
       }
     });
