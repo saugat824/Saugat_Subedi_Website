@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Saugat Subedi | Operations Strategy &amp; Business Analytics</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:    '#FDF8F0',
+            sand:     '#F5EDE3',
+            warm:     '#EDE4D8',
+            accent:   '#C8926E',
+            'accent-dark': '#A97550',
+            navy:     '#1A2332',
+            charcoal: '#2D3748',
+            slate:    '#4A5568',
+            muted:    '#8B95A5',
+            light:    '#CBD5E0',
+          },
+          fontFamily: {
+            serif:  ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans:   ['Cormorant Garamond', 'Georgia', 'serif'],
+            mono:   ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background: #FDF8F0; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all 0.85s cubic-bezier(.22,1,.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    ::selection { background: #C8926E; color: #fff; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FDF8F0; }
+    ::-webkit-scrollbar-thumb { background: #D4C4B0; border-radius: 3px; }
+    .skill-fill { width: 0; transition: width 1.2s cubic-bezier(.22,1,.36,1); }
+    .skill-fill.animate { width: var(--tw); }
+    #three-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .nav-solid { background: rgba(253,248,240,0.95) !important; backdrop-filter: blur(12px) !important; box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .float-anim { animation: float 6s ease-in-out infinite; }
+    .photo-card { transition: transform 0.5s cubic-bezier(.22,1,.36,1), box-shadow 0.5s; }
+    .photo-card:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
+  </style>
+</head>
+
+<body class="font-sans text-charcoal overflow-x-hidden relative min-h-screen flex flex-col">
+
+  <canvas id="three-bg"></canvas>
+
+  <!-- NAV -->
+  <header id="nav" class="fixed top-0 w-full z-50 bg-cream/70 backdrop-blur-md border-b border-warm/60 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold font-serif text-lg group-hover:scale-110 transition-transform">S</div>
+        <span class="font-semibold text-lg tracking-wide text-navy group-hover:text-accent transition-colors font-serif">Saugat Subedi</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-slate hover:text-navy transition-colors">About</a>
+        <a href="#experience" class="text-sm font-medium text-slate hover:text-navy transition-colors">Experience</a>
+        <a href="#projects" class="text-sm font-medium text-slate hover:text-navy transition-colors">Projects</a>
+        <a href="#skills" class="text-sm font-medium text-slate hover:text-navy transition-colors">Skills</a>
+        <a href="#leadership" class="text-sm font-medium text-slate hover:text-navy transition-colors">Leadership</a>
+        <a href="#contact" class="px-6 py-2.5 rounded-full bg-navy text-white font-semibold text-sm hover:bg-accent transition-all transform hover:scale-105">Get In Touch</a>
+      </div>
+      <button id="mob-btn" class="md:hidden text-navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+    </nav>
+    <div id="mob-menu" class="hidden md:hidden bg-cream border-b border-warm shadow-lg">
+      <div class="px-4 py-3 space-y-1">
+        <a href="#about" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">About</a>
+        <a href="#experience" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">Experience</a>
+        <a href="#projects" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">Projects</a>
+        <a href="#skills" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">Skills</a>
+        <a href="#leadership" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">Leadership</a>
+        <a href="#contact" class="block px-4 py-3 text-slate hover:bg-sand rounded-lg">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow relative z-10">
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div>
+          <div class="reveal font-mono text-muted text-xs mb-6 bg-sand px-4 py-2 rounded-lg border border-warm inline-block">Operations Strategy &amp; Process Engineering</div>
+          <h1 class="reveal text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-navy mb-6 leading-[1.1] tracking-tight">
+            Saugat<br/>Subedi
+          </h1>
+          <p class="reveal text-lg text-slate mb-8 leading-relaxed max-w-lg">
+            Business Analytics student turning <span class="text-accent font-semibold">complex data into operational intelligence</span> — process engineering, workflow optimization, and data-driven strategy for real organizations.
+          </p>
+          <div class="reveal flex flex-wrap gap-4">
+            <a href="#projects" class="px-8 py-3.5 rounded-full bg-navy text-white font-semibold hover:bg-accent transition-all hover:scale-105 shadow-lg shadow-navy/15">View Projects</a>
+            <a href="#contact" class="px-8 py-3.5 rounded-full border-2 border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all">Get In Touch</a>
+          </div>
+          <!-- Key stats -->
+          <div class="reveal grid grid-cols-4 gap-4 mt-14">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-navy counter" data-target="3.84" data-decimals="2">0</div>
+              <div class="text-[10px] text-muted uppercase tracking-widest mt-1">GPA</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-navy counter" data-target="500" data-suffix="+">0</div>
+              <div class="text-[10px] text-muted uppercase tracking-widest mt-1">Records/Mo</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-navy">$75K+</div>
+              <div class="text-[10px] text-muted uppercase tracking-widest mt-1">Budget Mgd</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-navy">5</div>
+              <div class="text-[10px] text-muted uppercase tracking-widest mt-1">Dean's List</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="reveal flex justify-center md:justify-end">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-br from-accent/20 via-sand to-warm rounded-[2rem] blur-2xl"></div>
+            <div class="photo-card relative w-72 h-[26rem] md:w-80 md:h-[30rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl rotate-2">
+              <img src="saugat.jpg" alt="Saugat Subedi" class="w-full h-full object-cover object-top" />
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-warm float-anim">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-navy">Caldwell University</p>
+                  <p class="text-[10px] text-muted">Honors Program</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-3 -right-3 bg-white rounded-xl px-4 py-2 shadow-lg border border-warm float-anim" style="animation-delay: 1.5s">
+              <p class="text-xs font-bold text-accent">CalHacks 12.0</p>
+              <p class="text-[10px] text-muted">UC Berkeley</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="py-24 px-6 bg-white">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div class="reveal">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Professional Summary</span>
+          <h2 class="text-4xl font-serif text-navy mt-2 mb-6">Data-Driven <span class="italic text-slate">Operations Thinker</span></h2>
+          <p class="text-slate leading-relaxed mb-6">
+            Business Analytics student with hands-on experience in <strong class="text-navy">process analysis, data collection framework design, workflow documentation, and cross-functional stakeholder reporting</strong> applied to real organizations. At Eisai US, identified data process gaps across a 200+ vendor supply chain, redesigned data flows, and delivered an operationally adopted compliance roadmap.
+          </p>
+          <p class="text-slate leading-relaxed">
+            As APM at PSEG ISS, maps and optimizes research workflows for Fortune 1000 clients. Proficient in Python, R, SQL, Advanced Excel, Tableau, and Power BI. Familiar with Lean principles, operations research, and systematic approaches to identifying inefficiencies and automation opportunities.
+          </p>
+        </div>
+        <div class="reveal space-y-6">
+          <!-- Education Card -->
+          <div class="bg-cream p-8 rounded-2xl border border-warm">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="text-navy font-bold">Caldwell University &mdash; Honors</h3>
+                <p class="text-xs text-muted">B.Sc. Business Analytics | Minor: Healthcare Admin | May 2027</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-5">
+              <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold">GPA 3.84</span>
+              <span class="px-3 py-1 rounded-full bg-navy/5 text-navy text-xs font-medium">Dean's List x 5</span>
+              <span class="px-3 py-1 rounded-full bg-navy/5 text-navy text-xs font-medium">NSLS</span>
+            </div>
+            <div class="text-xs text-muted leading-relaxed">
+              <strong class="text-slate">Coursework:</strong> Operations Research, Database Management Systems, Business Analytics, Project Management, Data Visualization, Product Innovation, Discrete Math, Linear Algebra, Probability &amp; Statistics
+            </div>
+          </div>
+          <!-- Languages -->
+          <div class="bg-cream p-6 rounded-2xl border border-warm">
+            <h4 class="text-navy font-bold text-sm mb-4">Languages</h4>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-slate">English (Fluent)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-navy"></span><span class="text-sm text-slate">Nepali (Native)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-slate">Hindi (Fluent)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-muted"></span><span class="text-sm text-slate">Amharic (Conv.)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Professional Journey</span>
+          <h2 class="text-4xl font-serif text-navy mt-2">Work Experience</h2>
+          <div class="h-1 w-16 bg-accent mx-auto rounded-full mt-4"></div>
+        </div>
+
+        <div class="relative pl-8 space-y-10">
+          <div class="absolute left-3 top-2 bottom-0 w-px bg-warm"></div>
+
+          <!-- APM PSEG -->
+          <div class="reveal relative group">
+            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
+            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
+              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                <div>
+                  <h3 class="text-lg font-bold text-navy">Assistant Project Manager (APM)</h3>
+                  <p class="text-sm text-slate">PSEG Institute for Sustainability Studies, Montclair State University</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">May 2026 &ndash; Present</span>
+              </div>
+              <ul class="text-sm text-slate space-y-2 leading-relaxed">
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Design data collection and workflow frameworks for analytics research projects serving two Fortune 1000 companies &mdash; mapping processes, identifying gaps, and defining scalable approaches</li>
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Collaborate cross-functionally with product and data teams to define process themes, gather requirements, and align research deliverables to operational priorities</li>
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Analyze data across concurrent workstreams to identify patterns and inefficiencies; synthesize findings into executive-ready reports and visualizations</li>
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Develop centralized project documentation and progress reporting; manage own workload across multiple engagements with weekly reporting</li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Process Engineering</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Stakeholder Reporting</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Fortune 1000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eisai -->
+          <div class="reveal relative group">
+            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-navy shadow-md z-10"></div>
+            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
+              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                <div>
+                  <h3 class="text-lg font-bold text-navy">Analytics &amp; Research Intern</h3>
+                  <p class="text-sm text-slate">Eisai US &ndash; PSEG Institute for Sustainability Studies</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold whitespace-nowrap">May &ndash; Aug 2025</span>
+              </div>
+              <ul class="text-sm text-slate space-y-2 leading-relaxed">
+                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Mapped current-state data flows across pharmaceutical supply chain (200+ vendor accounts); identified process gaps, data inconsistencies, and manual workflow inefficiencies</li>
+                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Designed normalized SQL database replacing fragmented manual processes &mdash; built schema, developed ETL pipelines, established data validation for GHG Protocol compliance</li>
+                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Assessed process maturity across Scope 3 reporting workflows; benchmarked against pharma peers via SWOT analysis</li>
+                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Delivered process improvement roadmap adopted by Eisai sustainability operations &mdash; implementation steps, risk ratings, and progress metrics for CA climate disclosure</li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">SQL</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">ETL Design</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">GHG Protocol</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">SWOT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caldwell Admissions -->
+          <div class="reveal relative group">
+            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
+            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
+              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                <div>
+                  <h3 class="text-lg font-bold text-navy">Data Intelligence Student Assistant</h3>
+                  <p class="text-sm text-slate">Caldwell University Admissions</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">Sep 2024 &ndash; Present</span>
+              </div>
+              <ul class="text-sm text-slate space-y-2 leading-relaxed">
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Validate and process 500+ monthly enrollment records in Salesforce CRM; identify and resolve data integrity issues in relational database workflows</li>
+                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Build Tableau dashboards and Excel reports translating raw data into actionable insights for admissions leadership; document reporting workflows</li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Salesforce</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Tableau</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-md bg-sand text-slate font-medium">Data QA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="py-24 px-6 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Selected Work</span>
+          <h2 class="text-4xl font-serif text-navy mt-2">Featured Projects</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- P1 -->
+          <div class="reveal group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="aspect-[16/9] bg-gradient-to-br from-accent/15 via-sand to-warm flex items-center justify-center">
+              <svg class="w-14 h-14 text-accent/50 group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 0 0 .5-9.99A7 7 0 1 0 3 15z"/></svg>
+            </div>
+            <div class="p-7">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-accent font-bold">Eisai US &times; PSEG</span>
+                <span class="text-[10px] uppercase tracking-widest text-green-600 font-semibold">Adopted</span>
+              </div>
+              <h3 class="text-lg font-bold text-navy mb-2">Scope 3 Emissions Framework</h3>
+              <p class="text-sm text-slate leading-relaxed mb-4">End-to-end process engineering: mapped supply chain data flows, designed normalized SQL database + ETL pipelines, delivered compliance roadmap adopted by Eisai operations.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">SQL</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">ETL</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">GHG Protocol</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- P2 -->
+          <div class="reveal group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="aspect-[16/9] bg-gradient-to-br from-green-100 via-sand to-warm flex items-center justify-center">
+              <svg class="w-14 h-14 text-green-400/60 group-hover:text-green-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            </div>
+            <div class="p-7">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-green-600 font-bold">UC Berkeley CalHacks</span>
+                <span class="text-accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+              </div>
+              <h3 class="text-lg font-bold text-navy mb-2">Agricultural Intelligence</h3>
+              <p class="text-sm text-slate leading-relaxed mb-4">ML-powered automation system reducing manual crop inspection. Applied task automation to identify field operation inefficiencies. Honorable Mention in Hardware &amp; Sustainability.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">Python</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">ML</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">Robotics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- P3 -->
+          <div class="reveal group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="aspect-[16/9] bg-gradient-to-br from-blue-100 via-sand to-warm flex items-center justify-center">
+              <svg class="w-14 h-14 text-blue-400/50 group-hover:text-blue-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            </div>
+            <div class="p-7">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-blue-500 font-bold">Caldwell University</span>
+                <span class="text-[10px] uppercase tracking-widest text-blue-500 font-semibold">Delivered</span>
+              </div>
+              <h3 class="text-lg font-bold text-navy mb-2">Germany Financial Dashboard</h3>
+              <p class="text-sm text-slate leading-relaxed mb-4">Power BI dashboard analyzing 6 macroeconomic indicators (1991-2024). Time-series analysis correlating policy decisions with economic performance.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">Power BI</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">DAX</span>
+                <span class="text-[10px] font-mono text-muted bg-white px-2 py-0.5 rounded">Economics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Core Skills &amp; Tools</span>
+          <h2 class="text-4xl font-serif text-navy mt-2">Technical Arsenal</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Data Analysis -->
+          <div class="reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
+            <h3 class="text-navy font-bold text-sm mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              Data Analysis
+            </h3>
+            <div class="space-y-3">
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>Python</span><span>85%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-accent rounded-full" style="--tw:85%"></div></div></div>
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>SQL</span><span>90%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-accent rounded-full" style="--tw:90%"></div></div></div>
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>R</span><span>60%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-accent/60 rounded-full" style="--tw:60%"></div></div></div>
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>Adv. Excel / VBA</span><span>92%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-accent rounded-full" style="--tw:92%"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Process Tools -->
+          <div class="reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
+            <h3 class="text-navy font-bold text-sm mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+              Process Tools
+            </h3>
+            <ul class="text-sm text-slate space-y-2.5">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>BPMN Mapping</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Lucidchart / Visio</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Workflow Documentation</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Figma</li>
+            </ul>
+          </div>
+
+          <!-- Visualization -->
+          <div class="reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
+            <h3 class="text-navy font-bold text-sm mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-green-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
+              Visualization
+            </h3>
+            <div class="space-y-3">
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>Tableau</span><span>88%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-green-400 rounded-full" style="--tw:88%"></div></div></div>
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>Power BI</span><span>85%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-green-400 rounded-full" style="--tw:85%"></div></div></div>
+              <div><div class="flex justify-between text-[11px] text-muted mb-1"><span>Salesforce CRM</span><span>78%</span></div><div class="h-1.5 bg-sand rounded-full overflow-hidden"><div class="skill-fill h-full bg-green-400/70 rounded-full" style="--tw:78%"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Frameworks -->
+          <div class="reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
+            <h3 class="text-navy font-bold text-sm mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-purple-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+              Frameworks
+            </h3>
+            <ul class="text-sm text-slate space-y-2.5">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Lean Principles</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Operations Research</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Gap Analysis</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>SWOT / Maturity</li>
+            </ul>
+          </div>
+
+          <!-- Digital -->
+          <div class="reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
+            <h3 class="text-navy font-bold text-sm mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+              Digital &amp; PM
+            </h3>
+            <ul class="text-sm text-slate space-y-2.5">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>ETL Pipeline Design</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Pega Agile Studio</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Trello / Notion</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Google Workspace</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LEADERSHIP ===== -->
+    <section id="leadership" class="py-24 px-6 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Community &amp; Impact</span>
+          <h2 class="text-4xl font-serif text-navy mt-2">Leadership &amp; Engagement</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            </div>
+            <h3 class="text-navy font-bold mb-1">Caldwell Robotics</h3>
+            <p class="text-xs text-accent font-mono mb-3">Co-Founder &amp; PM</p>
+            <p class="text-sm text-slate leading-relaxed">Launched Makerspace, secured $15K+ funding. Organized ROBO-SOCCER (80+ participants) and COUGARHACKS hackathon. Process scoping, task assignment, and stakeholder reporting via Trello &amp; Notion.</p>
+          </div>
+
+          <div class="reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 class="text-navy font-bold mb-1">Honors Program</h3>
+            <p class="text-xs text-green-600 font-mono mb-3">President, E-Board</p>
+            <p class="text-sm text-slate leading-relaxed">Leading 200+ students, managing $25K budget. Operations, cross-functional programming, and structured progress reporting to university administration.</p>
+          </div>
+
+          <div class="reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="text-navy font-bold mb-1">Admissions Ambassador</h3>
+            <p class="text-xs text-blue-500 font-mono mb-3">Ambassador of the Year 24/25</p>
+            <p class="text-sm text-slate leading-relaxed">Represent and communicate institutional value across Open House, Accepted Students Day, and campus tours.</p>
+          </div>
+
+          <div class="reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 class="text-navy font-bold mb-1">SI Leader &amp; Tutor</h3>
+            <p class="text-xs text-purple-500 font-mono mb-3">Academic Success Center</p>
+            <p class="text-sm text-slate leading-relaxed">Discrete Math, Business Analytics, MIS, Database Management, College Writing. Design and deliver structured learning sessions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="reveal">
+          <span class="text-accent text-sm tracking-widest uppercase font-semibold">Let's Talk</span>
+          <h2 class="text-4xl font-serif text-navy mt-2 mb-6">Get In Touch</h2>
+          <p class="text-slate text-lg mb-10">Open to discussing operations strategy roles, analytics opportunities, research collaborations, or projects with meaningful impact.</p>
+
+          <div class="space-y-5">
+            <a href="mailto:ssubedi2@caldwell.edu" class="flex items-center gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-white border border-warm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-sm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="text-[10px] text-muted uppercase tracking-widest">Email</p>
+                <p class="text-navy font-medium group-hover:text-accent transition-colors">ssubedi2@caldwell.edu</p>
+              </div>
+            </a>
+            <a href="tel:+19732948220" class="flex items-center gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-white border border-warm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-sm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="text-[10px] text-muted uppercase tracking-widest">Phone</p>
+                <p class="text-navy font-medium group-hover:text-accent transition-colors">+1 (973) 294-8220</p>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/saugat-subedi-6a5bb3255" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+              <div class="w-12 h-12 rounded-xl bg-white border border-warm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-sm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <p class="text-[10px] text-muted uppercase tracking-widest">LinkedIn</p>
+                <p class="text-navy font-medium group-hover:text-accent transition-colors">saugat-subedi</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-white border border-warm flex items-center justify-center text-accent shadow-sm">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="text-[10px] text-muted uppercase tracking-widest">Location</p>
+                <p class="text-navy font-medium">Caldwell, NJ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form id="contact-form" class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" placeholder="Your Name" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+              <input type="email" placeholder="Your Email" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+            </div>
+            <input type="text" placeholder="Subject" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+            <textarea rows="5" placeholder="Your Message" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all resize-none shadow-sm" required></textarea>
+            <button type="submit" class="w-full py-4 bg-navy text-white font-bold rounded-xl hover:bg-accent transition-all transform hover:scale-[1.01] shadow-lg">Send Message</button>
+          </form>
+          <div id="form-status" class="hidden mt-4 p-4 rounded-xl text-center text-sm"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-16 px-6 border-t border-warm bg-white relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+        <div class="flex gap-5">
+          <div class="w-20 h-20 rounded-full bg-cream flex flex-col items-center justify-center border border-warm">
+            <span class="text-xl font-bold text-navy">3.84</span>
+            <span class="text-[9px] text-muted uppercase tracking-widest">GPA</span>
+          </div>
+          <div class="w-20 h-20 rounded-full bg-accent flex flex-col items-center justify-center text-white shadow-lg">
+            <span class="text-xl font-bold">5</span>
+            <span class="text-[9px] uppercase tracking-widest opacity-80">Dean's</span>
+          </div>
+          <div class="w-20 h-20 rounded-full bg-cream flex flex-col items-center justify-center border border-warm">
+            <span class="text-xl font-bold text-navy">$75K</span>
+            <span class="text-[9px] text-muted uppercase tracking-widest">Managed</span>
+          </div>
+        </div>
+        <div class="text-center md:text-right">
+          <h2 class="text-2xl font-serif text-navy mb-1">Ready to collaborate?</h2>
+          <a href="mailto:ssubedi2@caldwell.edu" class="text-accent hover:underline">ssubedi2@caldwell.edu</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-warm text-muted text-sm">
+        <p>&copy; 2025 Saugat Subedi. All rights reserved.</p>
+        <a href="https://www.linkedin.com/in/saugat-subedi-6a5bb3255" target="_blank" rel="noopener" class="hover:text-accent transition-colors mt-3 md:mt-0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- THREE.JS 3D BACKGROUND -->
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const canvas = document.getElementById('three-bg');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
+
+    // Soft-colored particles
+    const N = 400;
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(N * 3);
+    const vel = [];
+    for (let i = 0; i < N; i++) {
+      pos[i*3]   = (Math.random()-0.5)*70;
+      pos[i*3+1] = (Math.random()-0.5)*70;
+      pos[i*3+2] = (Math.random()-0.5)*40;
+      vel.push({x:(Math.random()-0.5)*0.008, y:(Math.random()-0.5)*0.008, z:(Math.random()-0.5)*0.004});
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mat = new THREE.PointsMaterial({ color: 0xC8926E, size: 0.06, transparent: true, opacity: 0.35, sizeAttenuation: true });
+    scene.add(new THREE.Points(geo, mat));
+
+    // Wireframe shapes (light warm tones)
+    const shapes = [];
+    const add = (g, c, p, s) => {
+      const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: c, wireframe: true, transparent: true, opacity: 0.08 }));
+      m.position.set(...p);
+      m.scale.setScalar(s);
+      m.userData = { rx:(Math.random()-0.5)*0.002, ry:(Math.random()-0.5)*0.002, fs:Math.random()*0.4+0.3, fa:Math.random()*0.4+0.2, by:p[1] };
+      scene.add(m);
+      shapes.push(m);
+    };
+    add(new THREE.IcosahedronGeometry(3,1), 0xC8926E, [-14,8,-10], 1);
+    add(new THREE.OctahedronGeometry(2.5,0), 0x3B82F6, [16,-6,-14], 1);
+    add(new THREE.TorusGeometry(2,0.5,8,24), 0x22C55E, [-10,-10,-8], 1);
+    add(new THREE.TetrahedronGeometry(2,0), 0xA855F7, [12,12,-12], 1);
+    add(new THREE.DodecahedronGeometry(1.8,0), 0xC8926E, [0,-14,-10], 0.8);
+    add(new THREE.TorusKnotGeometry(1.2,0.3,64,8), 0xF97316, [-18,0,-18], 0.6);
+
+    // Connection lines
+    const lGeo = new THREE.BufferGeometry();
+    const lPos = new Float32Array(N*6);
+    lGeo.setAttribute('position', new THREE.BufferAttribute(lPos, 3));
+    scene.add(new THREE.LineSegments(lGeo, new THREE.LineBasicMaterial({ color: 0xC8926E, transparent: true, opacity: 0.025 })));
+
+    let mouse = {x:0, y:0};
+    document.addEventListener('mousemove', e => { mouse.x = (e.clientX/window.innerWidth)*2-1; mouse.y = -(e.clientY/window.innerHeight)*2+1; });
+
+    const clock = new THREE.Clock();
+    (function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      const p = geo.attributes.position.array;
+      for (let i=0;i<N;i++) {
+        p[i*3]+=vel[i].x; p[i*3+1]+=vel[i].y; p[i*3+2]+=vel[i].z;
+        if(Math.abs(p[i*3])>35) vel[i].x*=-1;
+        if(Math.abs(p[i*3+1])>35) vel[i].y*=-1;
+        if(Math.abs(p[i*3+2])>20) vel[i].z*=-1;
+      }
+      geo.attributes.position.needsUpdate=true;
+
+      let li=0;
+      for(let i=0;i<Math.min(60,N);i++) for(let j=i+1;j<Math.min(60,N);j++){
+        const dx=p[i*3]-p[j*3],dy=p[i*3+1]-p[j*3+1],dz=p[i*3+2]-p[j*3+2];
+        if(dx*dx+dy*dy+dz*dz<144&&li<N){
+          lPos[li*6]=p[i*3];lPos[li*6+1]=p[i*3+1];lPos[li*6+2]=p[i*3+2];
+          lPos[li*6+3]=p[j*3];lPos[li*6+4]=p[j*3+1];lPos[li*6+5]=p[j*3+2];
+          li++;
+        }
+      }
+      for(let i=li;i<N;i++){lPos[i*6]=lPos[i*6+1]=lPos[i*6+2]=lPos[i*6+3]=lPos[i*6+4]=lPos[i*6+5]=0;}
+      lGeo.attributes.position.needsUpdate=true;
+
+      shapes.forEach(s=>{
+        s.rotation.x+=s.userData.rx; s.rotation.y+=s.userData.ry;
+        s.position.y=s.userData.by+Math.sin(t*s.userData.fs)*s.userData.fa;
+      });
+
+      camera.position.x+=(mouse.x*2.5-camera.position.x)*0.015;
+      camera.position.y+=(mouse.y*1.5-camera.position.y)*0.015;
+      camera.lookAt(0,0,0);
+      renderer.render(scene, camera);
+    })();
+
+    window.addEventListener('resize', ()=>{
+      camera.aspect=window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth,window.innerHeight);
+    });
+  </script>
+
+  <!-- INTERACTIONS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Scroll reveal
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); e.target.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animate')); obs.unobserve(e.target); }});
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // Counters
+      const cObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if(!e.isIntersecting) return;
+          const el=e.target, target=parseFloat(el.dataset.target), dec=parseInt(el.dataset.decimals)||0, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'', start=performance.now();
+          function tick(now){ const p=Math.min((now-start)/1600,1); el.textContent=pre+(target*(1-Math.pow(1-p,3))).toFixed(dec)+suf; if(p<1) requestAnimationFrame(tick); }
+          requestAnimationFrame(tick);
+          cObs.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('.counter').forEach(el => cObs.observe(el));
+
+      // Nav scroll
+      window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('nav-solid', window.scrollY > 50));
+
+      // Mobile menu
+      const btn=document.getElementById('mob-btn'), menu=document.getElementById('mob-menu');
+      btn.addEventListener('click', ()=>menu.classList.toggle('hidden'));
+      menu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>menu.classList.add('hidden')));
+
+      // Contact form
+      const form=document.getElementById('contact-form'), status=document.getElementById('form-status');
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        status.textContent='Sending...'; status.className='mt-4 p-4 rounded-xl text-center text-sm bg-accent/10 text-accent'; status.classList.remove('hidden');
+        setTimeout(()=>{ status.textContent="Sent! I'll get back to you soon."; status.className='mt-4 p-4 rounded-xl text-center text-sm bg-green-50 text-green-600'; form.reset(); },1200);
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){ e.preventDefault(); const t=document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); });
+      });
+    });
+  </script>
+</body>
+</html>
