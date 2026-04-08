@@ -107,16 +107,6 @@
 
 <body class="font-sans text-charcoal overflow-x-hidden relative min-h-screen flex flex-col loading antialiased">
 
-  <!-- FIXED HIRE ME BAR -->
-  <div id="hire-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9990] flex items-center gap-3 bg-navy/95 backdrop-blur-md px-5 py-3 rounded-full shadow-2xl shadow-navy/25 border border-white/10">
-    <a href="https://www.linkedin.com/in/saugat-subedi-6a5bb3255" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/10 hover:bg-accent flex items-center justify-center transition-all group" aria-label="LinkedIn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="group-hover:scale-110 transition-transform"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="mailto:ssubedi2@caldwell.edu" class="w-10 h-10 rounded-full bg-white/10 hover:bg-accent flex items-center justify-center transition-all group" aria-label="Email">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" class="group-hover:scale-110 transition-transform"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </a>
-    <a href="#contact" class="nav-link px-6 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold font-sans text-sm tracking-wide rounded-full transition-all shadow-lg shadow-accent/30">Hire Me</a>
-  </div>
 
   <!-- Preloader -->
   <div id="preloader">
@@ -148,7 +138,7 @@
         <a href="#skills" class="nav-link text-base font-medium text-slate hover:text-navy transition-colors">Skills</a>
         <a href="#leadership" class="nav-link text-base font-medium text-slate hover:text-navy transition-colors">Leadership</a>
         <a href="#honors" class="nav-link text-base font-medium text-slate hover:text-navy transition-colors">Awards</a>
-        <a href="#contact" class="px-5 py-2 rounded-full bg-navy text-white font-semibold text-sm hover:bg-accent transition-all nav-link" data-magnetic>Get In Touch</a>
+        <a href="#contact" class="px-5 py-2 rounded-full bg-navy text-white font-semibold text-sm hover:bg-accent transition-all nav-link" data-magnetic>Hire Me</a>
       </div>
       <button id="mob-btn" class="md:hidden text-navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
     </nav>
@@ -187,7 +177,7 @@
           </p>
           <div class="gs-reveal flex flex-wrap gap-4">
             <a href="#projects" class="nav-link px-8 py-3.5 rounded-full bg-navy text-white font-semibold hover:bg-accent transition-all shadow-lg shadow-navy/15" data-magnetic>View Projects</a>
-            <a href="#contact" class="nav-link px-8 py-3.5 rounded-full border-2 border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all" data-magnetic>Get In Touch</a>
+            <a href="#contact" class="nav-link px-8 py-3.5 rounded-full border-2 border-navy text-navy font-semibold hover:bg-navy hover:text-white transition-all" data-magnetic>Hire Me</a>
           </div>
           <div class="gs-reveal grid grid-cols-4 gap-4 mt-14">
             <div class="kpi-card text-center">
@@ -821,8 +811,8 @@
     <section id="contact" class="py-24 px-6">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
-          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Let's Talk</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Get In Touch</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Let's Connect</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Hire Me</h2>
           <p class="gs-reveal text-charcoal/80 text-xl md:text-2xl mb-10 leading-relaxed">Open to discussing operations strategy roles, analytics opportunities, research collaborations, or projects with meaningful impact.</p>
           <div class="space-y-5">
             <a href="mailto:ssubedi2@caldwell.edu" class="gs-reveal flex items-center gap-4 group">
@@ -844,13 +834,15 @@
           </div>
         </div>
         <div class="gs-reveal">
-          <form id="contact-form" class="space-y-4">
+          <form id="contact-form" action="https://formsubmit.co/ssubedi2@caldwell.edu" method="POST" class="space-y-4">
+            <input type="hidden" name="_captcha" value="false" />
             <div class="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="Your Name" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
-              <input type="email" placeholder="Your Email" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+              <input type="text" name="name" placeholder="Your Name" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+              <input type="email" name="_replyto" placeholder="Your Email" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
             </div>
-            <input type="text" placeholder="Subject" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
-            <textarea rows="5" placeholder="Your Message" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all resize-none shadow-sm" required></textarea>
+            <input type="text" name="_subject" placeholder="Subject" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all shadow-sm" required />
+            <textarea rows="5" name="message" placeholder="Your Message" class="w-full bg-white border border-warm rounded-xl px-4 py-3.5 text-navy placeholder:text-muted focus:border-accent focus:outline-none transition-all resize-none shadow-sm" required></textarea>
+            <input type="hidden" name="_next" value="https://saugat824.github.io/Saugat_Subedi_Website/" />
             <button type="submit" class="w-full py-4 bg-navy text-white font-bold rounded-xl hover:bg-accent transition-all" data-magnetic>Send Message</button>
           </form>
           <div id="form-status" class="hidden mt-4 p-4 rounded-xl text-center text-sm"></div>
@@ -1106,7 +1098,12 @@
       form.addEventListener('submit', e => {
         e.preventDefault();
         status.textContent = 'Sending...'; status.className = 'mt-4 p-4 rounded-xl text-center text-sm bg-accent/10 text-accent'; status.classList.remove('hidden');
-        setTimeout(() => { status.textContent = "Sent! I'll get back to you soon."; status.className = 'mt-4 p-4 rounded-xl text-center text-sm bg-green-50 text-green-600'; form.reset(); }, 1200);
+        fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(r => {
+            if (r.ok) { status.textContent = "Sent! I'll get back to you soon."; status.className = 'mt-4 p-4 rounded-xl text-center text-sm bg-green-50 text-green-600'; form.reset(); }
+            else { status.textContent = 'Something went wrong. Please email me directly.'; status.className = 'mt-4 p-4 rounded-xl text-center text-sm bg-red-50 text-red-600'; }
+          })
+          .catch(() => { status.textContent = 'Network error. Please email me directly.'; status.className = 'mt-4 p-4 rounded-xl text-center text-sm bg-red-50 text-red-600'; });
       });
 
       // --- GSAP ANIMATIONS (called after preloader) ---
