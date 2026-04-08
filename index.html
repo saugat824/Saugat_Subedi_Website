@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Saugat Subedi | Operations Strategy &amp; Business Analytics</title>
+  <title>Saugat Subedi</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
 
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
@@ -86,12 +88,17 @@
     /* Title clip reveal */
     .title-reveal { clip-path: inset(0 0 100% 0); }
 
-    /* Horizontal scroll */
-    .projects-track { display: flex; gap: 2rem; padding: 0 2rem; }
-    .project-card-h { width: 420px; flex-shrink: 0; }
+    /* 3D Project Grid */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; perspective: 1200px; padding: 0 2rem; }
+    .project-card-3d { transform-style: preserve-3d; transition: transform 0.5s ease, box-shadow 0.5s ease; }
+    .project-card-3d:hover { transform: translateY(-8px) rotateX(2deg) rotateY(-2deg); box-shadow: 0 25px 60px rgba(26,35,50,0.15); }
+    .project-card-3d:nth-child(odd) { transform: rotateY(1.5deg) rotateX(0.5deg); }
+    .project-card-3d:nth-child(even) { transform: rotateY(-1.5deg) rotateX(-0.5deg); }
+    .project-card-3d:nth-child(5) { grid-column: 1 / -1; max-width: 540px; margin: 0 auto; }
     @media (max-width: 767px) {
-      .projects-track { flex-direction: column; width: 100%; padding: 0; }
-      .project-card-h { width: 100%; }
+      .projects-grid { grid-template-columns: 1fr; padding: 0; perspective: none; }
+      .project-card-3d, .project-card-3d:nth-child(odd), .project-card-3d:nth-child(even) { transform: none; }
+      .project-card-3d:nth-child(5) { max-width: 100%; }
     }
 
     /* Nav */
@@ -309,8 +316,8 @@
             <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
             <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
               <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://media.licdn.com/dms/image/v2/D560BAQGtWt1bXMB4Yw/company-logo_200_200/company-logo_200_200/0/1710965344706/pseg_iss_logo?e=2147483647&v=beta&t=7UObIkrIQExriBqZjlZR-EVuHlwIgQqA8FvUx_z6WUw" alt="PSEG ISS" class="w-12 h-12 rounded-xl object-cover mt-0.5 bg-white border border-warm shadow-sm shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Assistant Project Manager (APM)</h3><p class="text-base text-slate">PSEG Institute for Sustainability Studies, Montclair State University</p></div></div>
-                <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">May 2026 &ndash; Present</span>
+                <div class="flex items-start gap-3"><img src="https://media.licdn.com/dms/image/v2/D560BAQGtWt1bXMB4Yw/company-logo_200_200/company-logo_200_200/0/1710965344706/pseg_iss_logo?e=2147483647&v=beta&t=7UObIkrIQExriBqZjlZR-EVuHlwIgQqA8FvUx_z6WUw" alt="PSEG ISS" class="w-12 h-12 rounded-xl object-cover mt-0.5 bg-white border border-warm shadow-sm shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Incoming Assistant Project Manager (APM)</h3><p class="text-base text-slate">PSEG Institute for Sustainability Studies, Montclair State University</p></div></div>
+                <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">Starting May 2026</span>
               </div>
               <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Design data collection and workflow frameworks for analytics research serving two Fortune 1000 companies</li>
@@ -325,67 +332,6 @@
               </div>
             </div>
           </div>
-
-          <div class="gs-reveal relative group">
-            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-navy shadow-md z-10"></div>
-            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
-              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQP8rQhwEwK8mdBQpSIe-QYY6RjvXtxMMJfA&s" alt="Eisai" class="w-12 h-12 rounded-xl object-cover mt-0.5 bg-white border border-warm shadow-sm shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Analytics &amp; Research Intern <a href="https://drive.google.com/file/d/1tERckPfuYFMH9Q1vNI9RPb8-p9C79MMF/view" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Certificate ↗</a></h3><p class="text-base text-slate">Eisai US &ndash; PSEG Institute for Sustainability Studies</p></div></div>
-                <span class="px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold whitespace-nowrap">May &ndash; Aug 2025</span>
-              </div>
-              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Mapped current-state data flows across pharmaceutical supply chain (200+ vendor accounts)</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Designed normalized SQL database replacing fragmented manual processes with ETL pipelines</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Assessed process maturity across Scope 3 reporting; benchmarked via SWOT analysis</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Conducted policy research on California Senate Bills 219, 253, and 261; performed competitor SWOT analysis</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Delivered process improvement roadmap adopted by Eisai sustainability operations</li>
-              </ul>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">SQL</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">ETL Design</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">GHG Protocol</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gs-reveal relative group">
-            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
-            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
-              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://www.caldwell.edu/wp-content/uploads/2020/06/university-logo-better-1.jpg" alt="Caldwell" class="w-12 h-12 rounded-xl object-cover mt-0.5 bg-white border border-warm shadow-sm shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Data Intelligence Student Assistant</h3><p class="text-base text-slate">Caldwell University Admissions</p></div></div>
-                <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">Sep 2024 &ndash; Present</span>
-              </div>
-              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
-                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Validate and process 500+ monthly enrollment records in Salesforce CRM</li>
-                <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Build Tableau dashboards and Excel reports translating raw data into actionable insights</li>
-              </ul>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">Salesforce</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">Tableau</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">Data QA</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="gs-reveal relative group">
-            <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-navy shadow-md z-10"></div>
-            <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
-              <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://i.ytimg.com/vi/f1SMrM9KwfM/maxresdefault.jpg" alt="MeroSiksha" class="w-12 h-12 rounded-xl object-cover mt-0.5 bg-white border border-warm shadow-sm shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Product Analyst Intern <a href="https://www.youtube.com/watch?v=pXA8U_SUwBo" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Content ↗</a></h3><p class="text-base text-slate">MeroSiksha Learning App, Kathmandu, NP</p></div></div>
-                <span class="px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold whitespace-nowrap">Feb &ndash; May 2023</span>
-              </div>
-              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Analyzed user engagement data for 2,000+ users to drive retention improvements and inform product decisions</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Collaborated with cross-functional teams on cost/benefit analysis based on data trends</li>
-                <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Designed and recorded 25 hours of Sciences and Mathematics preparatory content</li>
-              </ul>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">Product Analytics</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">User Engagement</span>
-                <span class="text-xs px-3 py-1.5 rounded-md bg-sand text-slate font-medium">EdTech</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -396,9 +342,50 @@
         <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Selected Work</span>
         <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Featured Projects</h2>
       </div>
-      <div id="projects-horizontal" class="overflow-hidden">
-        <div class="projects-track px-6 md:px-12">
-          <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
+      <div class="px-6 md:px-12 max-w-6xl mx-auto">
+        <div class="projects-grid">
+          <!-- 1. NY Jets Fan Engagement -->
+          <div class="project-card-3d group bg-cream rounded-2xl overflow-hidden border border-warm">
+            <div class="aspect-[16/9] bg-gradient-to-br from-green-900/10 to-warm relative overflow-hidden">
+              <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="survey"></canvas>
+            </div>
+            <div class="p-7">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-xs uppercase tracking-widest text-green-700 font-bold flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/New_York_Jets_logo.svg/1200px-New_York_Jets_logo.svg.png" alt="NY Jets" class="w-7 h-7 rounded-lg object-contain" onerror="this.style.display='none'">NY Jets</span>
+                <span class="text-xs uppercase tracking-widest text-green-600 font-semibold">n=805</span>
+              </div>
+              <h3 class="text-xl font-bold text-navy font-display mb-2">Campus Fan Engagement Strategy</h3>
+              <p class="text-base md:text-lg text-charcoal/75 leading-relaxed mb-4">Data-driven growth plan from 805-respondent survey across NY/NJ campuses. Identified pricing sweet spots ($40&ndash;$60), content strategy (comedy-first), and campus activation channels converting 66% of non-fans.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Survey Analytics</span>
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Segmentation</span>
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. BrainWave LMS -->
+          <div class="project-card-3d group bg-cream rounded-2xl overflow-hidden border border-warm">
+            <div class="aspect-[16/9] bg-gradient-to-br from-purple-50 to-warm relative overflow-hidden">
+              <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="lms"></canvas>
+            </div>
+            <div class="p-7">
+              <div class="flex justify-between items-start mb-3">
+                <span class="text-xs uppercase tracking-widest text-purple-600 font-bold flex items-center gap-2">BrainWave LMS</span>
+                <span class="text-xs uppercase tracking-widest text-purple-500 font-semibold">Product Innovation</span>
+              </div>
+              <h3 class="text-xl font-bold text-navy font-display mb-2">AI-Powered LMS for Higher Ed</h3>
+              <p class="text-base md:text-lg text-charcoal/75 leading-relaxed mb-4">Product innovation with Instructure executives (CTO &amp; CPO). AI-powered learning platform targeting the $100B+ LMS market &mdash; microlearning reels, AI copilot, and campus community for 264M global students.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Product Strategy</span>
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">AI/ML</span>
+                <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">EdTech</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Eisai Scope 3 -->
+          <div class="project-card-3d group bg-cream rounded-2xl overflow-hidden border border-warm">
             <div class="aspect-[16/9] bg-gradient-to-br from-accent/5 to-warm relative overflow-hidden">
               <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="flow"></canvas>
             </div>
@@ -418,7 +405,8 @@
             </div>
           </div>
 
-          <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
+          <!-- 4. CalHacks Agricultural Intelligence -->
+          <div class="project-card-3d group bg-cream rounded-2xl overflow-hidden border border-warm">
             <div class="aspect-[16/9] bg-gradient-to-br from-green-50 to-warm relative overflow-hidden">
               <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="neural"></canvas>
             </div>
@@ -438,7 +426,8 @@
             </div>
           </div>
 
-          <div class="project-card-h group bg-cream rounded-2xl overflow-hidden border border-warm hover:shadow-xl transition-all duration-300">
+          <!-- 5. Germany Financial Dashboard -->
+          <div class="project-card-3d group bg-cream rounded-2xl overflow-hidden border border-warm">
             <div class="aspect-[16/9] bg-gradient-to-br from-blue-50 to-warm relative overflow-hidden">
               <canvas class="project-viz absolute inset-0 w-full h-full" data-viz="chart"></canvas>
             </div>
@@ -1161,27 +1150,13 @@
           });
         });
 
-        // Horizontal scroll for projects (desktop only)
-        ScrollTrigger.matchMedia({
-          '(min-width: 768px)': function() {
-            const track = document.querySelector('.projects-track');
-            const cards = track.querySelectorAll('.project-card-h');
-            if (cards.length === 0) return;
-            const totalWidth = Array.from(cards).reduce((a, c) => a + c.offsetWidth + 32, 0);
-            const viewWidth = window.innerWidth;
-            gsap.to(track, {
-              x: -(totalWidth - viewWidth + 100),
-              ease: 'none',
-              scrollTrigger: {
-                trigger: '#projects-horizontal',
-                start: 'top top',
-                end: () => '+=' + (totalWidth - viewWidth + 200),
-                pin: '#projects',
-                scrub: 1,
-                invalidateOnRefresh: true,
-              }
-            });
-          }
+        // 3D project cards staggered reveal
+        gsap.utils.toArray('.project-card-3d').forEach((card, i) => {
+          gsap.from(card, {
+            opacity: 0, y: 60, rotateX: 8, rotateY: i % 2 === 0 ? 6 : -6,
+            duration: 0.8, delay: i * 0.12,
+            scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' }
+          });
         });
 
         // Lightweight section fade-in (no scrub for performance)
@@ -1223,6 +1198,8 @@
           if (type === 'flow') drawFlow(ctx, w, h, t);
           else if (type === 'neural') drawNeural(ctx, w, h, t);
           else if (type === 'chart') drawChart(ctx, w, h, t);
+          else if (type === 'survey') drawSurvey(ctx, w, h, t);
+          else if (type === 'lms') drawLMS(ctx, w, h, t);
 
           raf = requestAnimationFrame(animate);
         }
@@ -1344,6 +1321,77 @@
           ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2);
           ctx.fillStyle = '#3B82F6'; ctx.fill();
         });
+      }
+
+      function drawSurvey(ctx, w, h, t) {
+        const grow = Math.min(1, (t * 0.5) % 2);
+        // Donut chart — fan segments
+        const cx = w * 0.3, cy = h * 0.5, r = Math.min(w, h) * 0.28;
+        const segments = [0.217, 0.195, 0.16, 0.159, 0.159, 0.11];
+        const colors = ['#15803d','#22c55e','#4ade80','#86efac','#bbf7d0','#dcfce7'];
+        let angle = -Math.PI / 2;
+        segments.forEach((pct, i) => {
+          const sweep = pct * Math.PI * 2 * grow;
+          ctx.beginPath(); ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, r, angle, angle + sweep);
+          ctx.closePath(); ctx.fillStyle = colors[i]; ctx.fill();
+          angle += sweep;
+        });
+        ctx.beginPath(); ctx.arc(cx, cy, r * 0.55, 0, Math.PI * 2);
+        ctx.fillStyle = '#FDF8F0'; ctx.fill();
+        // Percentage labels
+        ctx.fillStyle = '#15803d'; ctx.font = `bold ${w*0.06}px sans-serif`; ctx.textAlign = 'center';
+        ctx.fillText('72%', cx, cy + w*0.02);
+        ctx.fillStyle = '#666'; ctx.font = `${w*0.025}px sans-serif`;
+        ctx.fillText('would attend', cx, cy + w*0.06);
+        // Bar metrics on right
+        const metrics = [{l:'Cost Barrier',v:0.61},{l:'Bring Friends',v:0.84},{l:'Campus Events',v:0.72}];
+        metrics.forEach((m, i) => {
+          const bx = w*0.62, by = h*0.25 + i*h*0.22, bw = w*0.3, bh = h*0.08;
+          ctx.fillStyle = '#f0fdf4'; ctx.fillRect(bx, by, bw, bh);
+          ctx.fillStyle = `rgba(21,128,61,${0.3+m.v*0.4})`; ctx.fillRect(bx, by, bw*m.v*grow, bh);
+          ctx.fillStyle = '#333'; ctx.font = `${w*0.025}px sans-serif`; ctx.textAlign = 'left';
+          ctx.fillText(m.l, bx, by - 4);
+          ctx.fillStyle = '#15803d'; ctx.font = `bold ${w*0.025}px sans-serif`; ctx.textAlign = 'right';
+          ctx.fillText(Math.round(m.v*100*grow)+'%', bx+bw, by - 4);
+        });
+      }
+
+      function drawLMS(ctx, w, h, t) {
+        const grow = Math.min(1, (t * 0.4) % 2);
+        // Connected nodes representing LMS modules
+        const nodes = [
+          {x:w*0.5,y:h*0.18,label:'AI Copilot',c:'#9333ea'},
+          {x:w*0.18,y:h*0.45,label:'Reels',c:'#a855f7'},
+          {x:w*0.82,y:h*0.45,label:'Hub',c:'#a855f7'},
+          {x:w*0.3,y:h*0.78,label:'Community',c:'#c084fc'},
+          {x:w*0.7,y:h*0.78,label:'Analytics',c:'#c084fc'},
+        ];
+        // Draw connections
+        const edges = [[0,1],[0,2],[1,3],[2,4],[3,4],[1,2]];
+        edges.forEach(([a,b]) => {
+          const na = nodes[a], nb = nodes[b];
+          ctx.strokeStyle = 'rgba(147,51,234,0.15)'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(na.x, na.y); ctx.lineTo(nb.x, nb.y); ctx.stroke();
+          // Flowing pulse
+          const p = ((t * 0.8 + a * 0.2) % 1);
+          const px = na.x + (nb.x - na.x) * p, py = na.y + (nb.y - na.y) * p;
+          ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(147,51,234,${0.7*(1-Math.abs(p-0.5)*2)})`; ctx.fill();
+        });
+        // Draw nodes
+        nodes.forEach(n => {
+          ctx.beginPath(); ctx.arc(n.x, n.y, w*0.06*grow, 0, Math.PI*2);
+          ctx.fillStyle = n.c + '18'; ctx.fill();
+          ctx.strokeStyle = n.c + '60'; ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.fillStyle = n.c; ctx.font = `bold ${w*0.024}px sans-serif`; ctx.textAlign = 'center';
+          ctx.fillText(n.label, n.x, n.y + w*0.008);
+        });
+        // Center metric
+        ctx.fillStyle = '#9333ea'; ctx.font = `bold ${w*0.04}px sans-serif`; ctx.textAlign = 'center';
+        ctx.fillText('$100B+', w*0.5, h*0.5);
+        ctx.fillStyle = '#888'; ctx.font = `${w*0.022}px sans-serif`;
+        ctx.fillText('LMS Market 2032', w*0.5, h*0.55);
       }
     });
   </script>
