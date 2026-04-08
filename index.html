@@ -7,7 +7,7 @@
 
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
@@ -28,8 +28,9 @@
             muted: '#8B95A5', light: '#CBD5E0',
           },
           fontFamily: {
-            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-            sans: ['Cormorant Garamond', 'Georgia', 'serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
         }
@@ -104,12 +105,12 @@
   </style>
 </head>
 
-<body class="font-sans text-charcoal overflow-x-hidden relative min-h-screen flex flex-col loading">
+<body class="font-sans text-charcoal overflow-x-hidden relative min-h-screen flex flex-col loading antialiased">
 
   <!-- Preloader -->
   <div id="preloader">
     <div class="loader-name">
-      <span class="text-5xl md:text-7xl font-serif font-medium text-navy" id="loader-text">Saugat Subedi</span>
+      <span class="text-5xl md:text-7xl font-display font-black text-navy" id="loader-text">Saugat Subedi</span>
     </div>
     <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
   </div>
@@ -127,7 +128,7 @@
     <nav class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
       <a href="#" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold font-serif text-lg group-hover:scale-110 transition-transform">S</div>
-        <span class="font-semibold text-lg tracking-wide text-navy group-hover:text-accent transition-colors font-serif">Saugat Subedi</span>
+        <span class="font-bold text-lg tracking-wide text-navy group-hover:text-accent transition-colors font-display">Saugat Subedi</span>
       </a>
       <div class="hidden md:flex items-center gap-6">
         <a href="#about" class="nav-link text-base font-medium text-slate hover:text-navy transition-colors">About</a>
@@ -163,14 +164,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <div class="gs-reveal mb-8 flex items-center gap-3">
-            <span class="hero-tag font-mono text-muted text-base bg-sand px-5 py-2.5 rounded-lg border border-warm inline-block" style="animation: tagFloat1 3s ease-in-out infinite;">Strategy</span>
-            <span class="hero-tag font-mono text-accent text-base bg-accent/10 px-5 py-2.5 rounded-lg border border-accent/30 inline-block" style="animation: tagFloat2 3.5s ease-in-out infinite;">Analytics</span>
-            <span class="hero-tag font-mono text-navy text-base bg-navy/5 px-5 py-2.5 rounded-lg border border-navy/20 inline-block" style="animation: tagFloat3 4s ease-in-out infinite;">Operations</span>
+            <span class="hero-tag font-sans font-semibold text-charcoal/70 text-sm tracking-wider bg-sand px-5 py-2.5 rounded-lg border border-warm inline-block" style="animation: tagFloat1 3s ease-in-out infinite;">Strategy</span>
+            <span class="hero-tag font-sans font-semibold text-accent text-sm tracking-wider bg-accent/10 px-5 py-2.5 rounded-lg border border-accent/30 inline-block" style="animation: tagFloat2 3.5s ease-in-out infinite;">Analytics</span>
+            <span class="hero-tag font-sans font-semibold text-navy text-sm tracking-wider bg-navy/5 px-5 py-2.5 rounded-lg border border-navy/20 inline-block" style="animation: tagFloat3 4s ease-in-out infinite;">Operations</span>
           </div>
-          <h1 id="hero-name" class="text-6xl md:text-7xl lg:text-8xl font-serif font-medium text-navy mb-8 leading-[1.05] tracking-tight">
+          <h1 id="hero-name" class="text-7xl md:text-8xl lg:text-9xl font-display font-black text-navy mb-8 leading-[0.95] tracking-tight">
             Saugat<br/>Subedi
           </h1>
-          <p id="hero-desc" class="text-2xl text-slate mb-10 leading-relaxed max-w-lg">
+          <p id="hero-desc" class="text-xl md:text-2xl text-charcoal/80 mb-10 leading-relaxed max-w-lg font-sans font-normal">
             Turning <span class="text-accent font-semibold">complex data into strategic advantage</span> — analytics, operations strategy, and cross-functional leadership for institutions and organizations.
           </p>
           <div class="gs-reveal flex flex-wrap gap-4">
@@ -179,19 +180,19 @@
           </div>
           <div class="gs-reveal grid grid-cols-4 gap-4 mt-14">
             <div class="kpi-card text-center">
-              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">GPA</div>
+              <div class="text-[11px] font-sans font-medium text-charcoal/50 uppercase tracking-widest mb-1">GPA</div>
               <div class="text-2xl font-bold text-navy counter" data-target="3.84" data-decimals="2">0</div>
             </div>
             <div class="kpi-card text-center">
-              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Records/Mo</div>
+              <div class="text-[11px] font-sans font-medium text-charcoal/50 uppercase tracking-widest mb-1">Records/Mo</div>
               <div class="text-2xl font-bold text-navy counter" data-target="500" data-suffix="+">0</div>
             </div>
             <div class="kpi-card text-center">
-              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Budget Mgd</div>
+              <div class="text-[11px] font-sans font-medium text-charcoal/50 uppercase tracking-widest mb-1">Budget Mgd</div>
               <div class="text-2xl font-bold text-navy">$75K+</div>
             </div>
             <div class="kpi-card text-center">
-              <div class="text-[10px] font-mono text-muted uppercase tracking-widest mb-1">Dean's List</div>
+              <div class="text-[11px] font-sans font-medium text-charcoal/50 uppercase tracking-widest mb-1">Dean's List</div>
               <div class="text-2xl font-bold text-navy">5</div>
             </div>
           </div>
@@ -257,10 +258,10 @@
     <section id="about" class="py-24 px-6 bg-white section-clip">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Professional Summary</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2 mb-6">Strategy, Analytics &amp; <span class="italic text-slate">Operations</span></h2>
-          <p class="gs-reveal text-xl text-slate leading-relaxed mb-6">Business Analytics &amp; MIS student with hands-on experience in <strong class="text-navy">strategy consulting, process engineering, cross-functional stakeholder management, and data-driven decision-making</strong> for institutions and organizations. At Eisai US, mapped data flows across a 200+ vendor supply chain and delivered an operationally adopted compliance roadmap.</p>
-          <p class="gs-reveal text-xl text-slate leading-relaxed">As APM at PSEG ISS, leads analytics research serving major organizations. As Chief of Staff in Student Government, managed $50K+ in budgets across 35+ organizations serving 2,200+ students. Proficient in Python, R, SQL, Tableau, Power BI, and Salesforce. Experienced in statistical modeling, competitive benchmarking, and optimization under constraints.</p>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Professional Summary</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Strategy, Analytics &amp; <span class="italic text-accent">Operations</span></h2>
+          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8] mb-6">Business Analytics &amp; MIS student with hands-on experience in <strong class="text-navy font-semibold">strategy consulting, process engineering, cross-functional stakeholder management, and data-driven decision-making</strong> for institutions and organizations. At Eisai US, mapped data flows across a 200+ vendor supply chain and delivered an operationally adopted compliance roadmap.</p>
+          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8]">As APM at PSEG ISS, leads analytics research serving major organizations. As Chief of Staff in Student Government, managed $50K+ in budgets across 35+ organizations serving 2,200+ students. Proficient in Python, R, SQL, Tableau, Power BI, and Salesforce. Experienced in statistical modeling, competitive benchmarking, and optimization under constraints.</p>
         </div>
         <div class="space-y-6">
           <div class="gs-reveal bg-cream p-8 rounded-2xl border border-warm">
@@ -268,7 +269,7 @@
               <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
               </div>
-              <div><h3 class="text-navy font-bold">Caldwell University &mdash; Honors</h3><p class="text-sm text-muted">B.Sc. Business Analytics | Minor: Management Information Systems | May 2027</p></div>
+              <div><h3 class="text-navy font-bold font-display text-lg">Caldwell University &mdash; Honors</h3><p class="text-sm text-charcoal/60">B.Sc. Business Analytics | Minor: Management Information Systems | May 2027</p></div>
             </div>
             <div class="flex items-center gap-3 flex-wrap mb-5">
               <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold">GPA 3.84</span>
@@ -279,12 +280,12 @@
             <div class="text-sm text-muted leading-relaxed"><strong class="text-slate">Coursework:</strong> Business Analytics, Database Management Systems, Data Visualization, Management Information Systems, Operations &amp; Project Management, Discrete Math, Linear Algebra, Probability &amp; Statistics, Advanced Excel, Operational Management in Healthcare</div>
           </div>
           <div class="gs-reveal bg-cream p-6 rounded-2xl border border-warm">
-            <h4 class="text-navy font-bold text-sm mb-4">Languages</h4>
+            <h4 class="text-navy font-bold text-sm font-display mb-4">Languages</h4>
             <div class="grid grid-cols-2 gap-3">
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-slate">English (Fluent)</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-navy"></span><span class="text-sm text-slate">Nepali (Native)</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-slate">Hindi (Fluent)</span></div>
-              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-muted"></span><span class="text-sm text-slate">Amharic (Conv.)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-charcoal/65">English (Fluent)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-navy"></span><span class="text-sm text-charcoal/65">Nepali (Native)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span><span class="text-sm text-charcoal/65">Hindi (Fluent)</span></div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-muted"></span><span class="text-sm text-charcoal/65">Amharic (Conv.)</span></div>
             </div>
           </div>
         </div>
@@ -295,8 +296,8 @@
     <section id="experience" class="py-24 px-6">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Professional Journey</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Work Experience</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Professional Journey</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Work Experience</h2>
           <div class="gs-reveal h-1 w-16 bg-accent mx-auto rounded-full mt-4"></div>
         </div>
         <div class="relative pl-8 space-y-10">
@@ -306,10 +307,10 @@
             <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
             <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
               <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://www.montclair.edu/university-communications/wp-content/uploads/sites/144/2020/10/favicon.png" alt="MSU" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy">Assistant Project Manager (APM)</h3><p class="text-base text-slate">PSEG Institute for Sustainability Studies, Montclair State University</p></div></div>
+                <div class="flex items-start gap-3"><img src="https://www.montclair.edu/university-communications/wp-content/uploads/sites/144/2020/10/favicon.png" alt="MSU" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Assistant Project Manager (APM)</h3><p class="text-base text-slate">PSEG Institute for Sustainability Studies, Montclair State University</p></div></div>
                 <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">May 2026 &ndash; Present</span>
               </div>
-              <ul class="text-lg text-slate space-y-2.5 leading-relaxed">
+              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Design data collection and workflow frameworks for analytics research serving two Fortune 1000 companies</li>
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Collaborate cross-functionally with product and data teams to define process themes and align deliverables</li>
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Analyze data across concurrent workstreams; synthesize findings into executive-ready reports</li>
@@ -327,10 +328,10 @@
             <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-navy shadow-md z-10"></div>
             <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
               <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://us.eisai.com/favicon.ico" alt="Eisai" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy">Analytics &amp; Research Intern <a href="https://drive.google.com/file/d/1tERckPfuYFMH9Q1vNI9RPb8-p9C79MMF/view" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Certificate ↗</a></h3><p class="text-base text-slate">Eisai US &ndash; PSEG Institute for Sustainability Studies</p></div></div>
+                <div class="flex items-start gap-3"><img src="https://us.eisai.com/favicon.ico" alt="Eisai" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Analytics &amp; Research Intern <a href="https://drive.google.com/file/d/1tERckPfuYFMH9Q1vNI9RPb8-p9C79MMF/view" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Certificate ↗</a></h3><p class="text-base text-slate">Eisai US &ndash; PSEG Institute for Sustainability Studies</p></div></div>
                 <span class="px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold whitespace-nowrap">May &ndash; Aug 2025</span>
               </div>
-              <ul class="text-lg text-slate space-y-2.5 leading-relaxed">
+              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Mapped current-state data flows across pharmaceutical supply chain (200+ vendor accounts)</li>
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Designed normalized SQL database replacing fragmented manual processes with ETL pipelines</li>
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Assessed process maturity across Scope 3 reporting; benchmarked via SWOT analysis</li>
@@ -349,10 +350,10 @@
             <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-accent shadow-md z-10"></div>
             <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
               <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://www.caldwell.edu/favicon.ico" alt="Caldwell" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy">Data Intelligence Student Assistant</h3><p class="text-base text-slate">Caldwell University Admissions</p></div></div>
+                <div class="flex items-start gap-3"><img src="https://www.caldwell.edu/favicon.ico" alt="Caldwell" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Data Intelligence Student Assistant</h3><p class="text-base text-slate">Caldwell University Admissions</p></div></div>
                 <span class="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold whitespace-nowrap">Sep 2024 &ndash; Present</span>
               </div>
-              <ul class="text-lg text-slate space-y-2.5 leading-relaxed">
+              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Validate and process 500+ monthly enrollment records in Salesforce CRM</li>
                 <li class="flex gap-2"><span class="text-accent mt-1 shrink-0">&bull;</span>Build Tableau dashboards and Excel reports translating raw data into actionable insights</li>
               </ul>
@@ -368,10 +369,10 @@
             <div class="absolute -left-[25px] top-6 w-4 h-4 rounded-full border-[3px] border-cream bg-navy shadow-md z-10"></div>
             <div class="bg-white p-8 rounded-2xl border border-warm shadow-sm hover:shadow-lg transition-shadow">
               <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
-                <div class="flex items-start gap-3"><img src="https://merosiksha.com/favicon.ico" alt="MeroSiksha" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy">Product Analyst Intern <a href="https://www.youtube.com/watch?v=pXA8U_SUwBo" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Content ↗</a></h3><p class="text-base text-slate">MeroSiksha Learning App, Kathmandu, NP</p></div></div>
+                <div class="flex items-start gap-3"><img src="https://merosiksha.com/favicon.ico" alt="MeroSiksha" class="w-9 h-9 rounded-lg object-contain mt-0.5 bg-white border border-warm p-1 shrink-0" onerror="this.style.display='none'"><div><h3 class="text-xl font-bold text-navy font-display">Product Analyst Intern <a href="https://www.youtube.com/watch?v=pXA8U_SUwBo" target="_blank" rel="noopener" class="text-accent text-sm hover:underline ml-1">Content ↗</a></h3><p class="text-base text-slate">MeroSiksha Learning App, Kathmandu, NP</p></div></div>
                 <span class="px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold whitespace-nowrap">Feb &ndash; May 2023</span>
               </div>
-              <ul class="text-lg text-slate space-y-2.5 leading-relaxed">
+              <ul class="text-base md:text-lg text-charcoal/80 space-y-2.5 leading-relaxed">
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Analyzed user engagement data for 2,000+ users to drive retention improvements and inform product decisions</li>
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Collaborated with cross-functional teams on cost/benefit analysis based on data trends</li>
                 <li class="flex gap-2"><span class="text-navy mt-1 shrink-0">&bull;</span>Designed and recorded 25 hours of Sciences and Mathematics preparatory content</li>
@@ -390,8 +391,8 @@
     <!-- PROJECTS (horizontal scroll) -->
     <section id="projects" class="py-24 bg-white section-clip">
       <div class="px-6 max-w-6xl mx-auto text-center mb-16">
-        <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Selected Work</span>
-        <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Featured Projects</h2>
+        <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Selected Work</span>
+        <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Featured Projects</h2>
       </div>
       <div id="projects-horizontal" class="overflow-hidden">
         <div class="projects-track px-6 md:px-12">
@@ -404,8 +405,8 @@
                 <span class="text-xs uppercase tracking-widest text-accent font-bold flex items-center gap-2"><img src="https://us.eisai.com/favicon.ico" alt="Eisai" class="w-5 h-5 rounded object-contain" onerror="this.style.display='none'">Eisai US &times; PSEG</span>
                 <span class="text-xs uppercase tracking-widest text-green-600 font-semibold">Adopted</span>
               </div>
-              <h3 class="text-xl font-bold text-navy mb-2">Scope 3 Emissions Framework</h3>
-              <p class="text-lg text-slate leading-relaxed mb-4">End-to-end process engineering: mapped supply chain data flows, designed normalized SQL database + ETL pipelines, delivered compliance roadmap adopted by Eisai operations.</p>
+              <h3 class="text-xl font-bold text-navy font-display mb-2">Scope 3 Emissions Framework</h3>
+              <p class="text-base md:text-lg text-charcoal/75 leading-relaxed mb-4">End-to-end process engineering: mapped supply chain data flows, designed normalized SQL database + ETL pipelines, delivered compliance roadmap adopted by Eisai operations.</p>
               <div class="flex flex-wrap gap-1.5">
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">SQL</span>
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">ETL</span>
@@ -424,8 +425,8 @@
                 <span class="text-xs uppercase tracking-widest text-green-600 font-bold flex items-center gap-2"><img src="https://www.berkeley.edu/favicon.ico" alt="Berkeley" class="w-5 h-5 rounded object-contain" onerror="this.style.display='none'">UC Berkeley CalHacks</span>
                 <span class="text-accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
               </div>
-              <h3 class="text-xl font-bold text-navy mb-2">Agricultural Intelligence</h3>
-              <p class="text-lg text-slate leading-relaxed mb-4">ML-powered automation reducing manual crop inspection. Applied task automation to field operations. Honorable Mention in Hardware &amp; Sustainability.</p>
+              <h3 class="text-xl font-bold text-navy font-display mb-2">Agricultural Intelligence</h3>
+              <p class="text-base md:text-lg text-charcoal/75 leading-relaxed mb-4">ML-powered automation reducing manual crop inspection. Applied task automation to field operations. Honorable Mention in Hardware &amp; Sustainability.</p>
               <div class="flex flex-wrap gap-1.5">
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Python</span>
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">ML</span>
@@ -444,8 +445,8 @@
                 <span class="text-xs uppercase tracking-widest text-blue-500 font-bold">Caldwell University</span>
                 <span class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Delivered</span>
               </div>
-              <h3 class="text-xl font-bold text-navy mb-2">Germany Financial Dashboard</h3>
-              <p class="text-lg text-slate leading-relaxed mb-4">Power BI dashboard analyzing 6 macroeconomic indicators (1991-2024). Time-series analysis correlating policy decisions with economic performance.</p>
+              <h3 class="text-xl font-bold text-navy font-display mb-2">Germany Financial Dashboard</h3>
+              <p class="text-base md:text-lg text-charcoal/75 leading-relaxed mb-4">Power BI dashboard analyzing 6 macroeconomic indicators (1991-2024). Time-series analysis correlating policy decisions with economic performance.</p>
               <div class="flex flex-wrap gap-1.5">
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">Power BI</span>
                 <span class="text-xs font-mono text-muted bg-white px-2.5 py-1 rounded">DAX</span>
@@ -462,13 +463,13 @@
     <section id="skills" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Core Skills &amp; Tools</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Technical Arsenal</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Core Skills &amp; Tools</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Technical Arsenal</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <!-- Data Analysis — span 2 -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all md:col-span-2">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
               Data Analysis
             </h3>
@@ -505,11 +506,11 @@
           </div>
           <!-- Process Tools -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
               Process Tools
             </h3>
-            <ul class="text-base text-slate space-y-2.5">
+            <ul class="text-base text-charcoal/75 space-y-2.5">
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>BPMN Mapping</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Lucidchart / Visio</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Workflow Docs</li>
@@ -518,7 +519,7 @@
           </div>
           <!-- Visualization -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-green-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
               Visualization
             </h3>
@@ -548,11 +549,11 @@
           </div>
           <!-- Research & Analysis -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-purple-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
               Research &amp; Analysis
             </h3>
-            <ul class="text-base text-slate space-y-2.5">
+            <ul class="text-base text-charcoal/75 space-y-2.5">
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Statistical Modeling</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Experimental Design</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Policy Analysis</li>
@@ -561,11 +562,11 @@
           </div>
           <!-- Domain Expertise -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
               Domain Expertise
             </h3>
-            <ul class="text-base text-slate space-y-2.5">
+            <ul class="text-base text-charcoal/75 space-y-2.5">
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Supply Chain Analytics</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Sustainability Metrics</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Healthcare Operations</li>
@@ -574,17 +575,17 @@
           </div>
           <!-- Frameworks & Tools — span 2 -->
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg transition-all md:col-span-2">
-            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2">
+            <h3 class="text-navy font-bold text-base mb-5 flex items-center gap-2 font-display">
               <span class="w-7 h-7 rounded-lg bg-rose-50 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
               Frameworks &amp; PM
             </h3>
             <div class="grid grid-cols-2 gap-2">
-              <ul class="text-base text-slate space-y-2.5">
+              <ul class="text-base text-charcoal/75 space-y-2.5">
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Lean &amp; Six Sigma</li>
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Operations Research</li>
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Gap &amp; SWOT Analysis</li>
               </ul>
-              <ul class="text-base text-slate space-y-2.5">
+              <ul class="text-base text-charcoal/75 space-y-2.5">
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>ETL Pipeline Design</li>
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Pega Agile Studio</li>
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>Trello / Notion / Figma</li>
@@ -599,43 +600,43 @@
     <section id="leadership" class="py-24 px-6 bg-white section-clip">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Community &amp; Impact</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Leadership &amp; Engagement</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Community &amp; Impact</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Leadership &amp; Engagement</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="gs-reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A2332" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h3 class="text-navy font-bold mb-1">Chief of Staff, SGA</h3>
+            <h3 class="text-navy font-bold mb-1 font-display">Chief of Staff, SGA</h3>
             <p class="text-sm text-navy font-mono mb-3">Apr 2024 &ndash; Aug 2025</p>
-            <p class="text-lg text-slate leading-relaxed">Enhanced campus accessibility for 2,200+ students. Managed logistics for 35+ clubs with $50K combined budget.</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Enhanced campus accessibility for 2,200+ students. Managed logistics for 35+ clubs with $50K combined budget.</p>
             <a href="https://www.instagram.com/p/C_ehdPrupNS/" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-2 inline-block">Visit Page ↗</a>
           </div>
           <div class="gs-reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
-            <h3 class="text-navy font-bold mb-1">Caldwell Robotics</h3>
+            <h3 class="text-navy font-bold mb-1 font-display">Caldwell Robotics</h3>
             <p class="text-sm text-accent font-mono mb-3">Co-Founder &amp; PM</p>
-            <p class="text-lg text-slate leading-relaxed">Launched Makerspace, $15K+ funding. ROBO-SOCCER (80+), <a href="https://cougarhacks2025.devpost.com/" target="_blank" rel="noopener" class="text-accent hover:underline">COUGARHACKS</a> hackathon.</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Launched Makerspace, $15K+ funding. ROBO-SOCCER (80+), <a href="https://cougarhacks2025.devpost.com/" target="_blank" rel="noopener" class="text-accent hover:underline">COUGARHACKS</a> hackathon.</p>
             <a href="https://www.instagram.com/caldwellrobotics/" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-2 inline-block">Visit Page ↗</a>
           </div>
           <div class="gs-reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-            <h3 class="text-navy font-bold mb-1">Honors Program</h3>
+            <h3 class="text-navy font-bold mb-1 font-display">Honors Program</h3>
             <p class="text-sm text-green-600 font-mono mb-3">President, E-Board</p>
-            <p class="text-lg text-slate leading-relaxed">Leading 200+ students, $25K budget. Academic enrichment, alumni networking, cultural initiatives.</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Leading 200+ students, $25K budget. Academic enrichment, alumni networking, cultural initiatives.</p>
             <a href="https://www.instagram.com/caldwell_honors" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-2 inline-block">Visit Page ↗</a>
           </div>
           <div class="gs-reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h3 class="text-navy font-bold mb-1">Admissions Ambassador</h3>
+            <h3 class="text-navy font-bold mb-1 font-display">Admissions Ambassador</h3>
             <p class="text-sm text-blue-500 font-mono mb-3">Ambassador of the Year 24/25</p>
-            <p class="text-lg text-slate leading-relaxed">Represent institutional value across Open House, Accepted Students Day, campus tours.</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Represent institutional value across Open House, Accepted Students Day, campus tours.</p>
             <a href="https://tinyurl.com/3tafc9zs" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-2 inline-block">Visit Page ↗</a>
           </div>
           <div class="gs-reveal bg-cream p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-            <h3 class="text-navy font-bold mb-1">SI Leader &amp; Tutor</h3>
+            <h3 class="text-navy font-bold mb-1 font-display">SI Leader &amp; Tutor</h3>
             <p class="text-sm text-purple-500 font-mono mb-3">Academic Success Center</p>
-            <p class="text-lg text-slate leading-relaxed">Discrete Math, Business Analytics, MIS, Database Management, College Writing.</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Discrete Math, Business Analytics, MIS, Database Management, College Writing.</p>
           </div>
         </div>
       </div>
@@ -645,26 +646,26 @@
     <section id="certifications" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Professional Development</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Certifications</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Professional Development</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Certifications</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <a href="https://www.citiprogram.org/verify/?w1f9a0871-ba14-4a5c-93b5-31e14634ac36-66036702" target="_blank" rel="noopener" class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
             <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <h3 class="text-navy font-bold mb-1 group-hover:text-accent transition-colors">Responsible Conduct of Research</h3>
-            <p class="text-sm text-slate">CITI Program &mdash; IRB, ethics, human subjects research compliance</p>
+            <h3 class="text-navy font-bold mb-1 font-display group-hover:text-accent transition-colors">Responsible Conduct of Research</h3>
+            <p class="text-sm text-charcoal/65">CITI Program &mdash; IRB, ethics, human subjects research compliance</p>
             <span class="text-xs text-accent mt-3 inline-block">View Certificate ↗</span>
           </a>
           <a href="https://sites.google.com/caldwell.edu/greenteamleadership/" target="_blank" rel="noopener" class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
             <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3 class="text-navy font-bold mb-1 group-hover:text-accent transition-colors">Green Team Leadership Certificate</h3>
-            <p class="text-sm text-slate">PSEG Institute for Sustainability Studies &mdash; environmental leadership</p>
+            <h3 class="text-navy font-bold mb-1 font-display group-hover:text-accent transition-colors">Green Team Leadership Certificate</h3>
+            <p class="text-sm text-charcoal/65">PSEG Institute for Sustainability Studies &mdash; environmental leadership</p>
             <span class="text-xs text-accent mt-3 inline-block">View Program ↗</span>
           </a>
           <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/CBRE/z6s8NqJbfkEzJRA2X_CBRE_jYbTfaZ43q8BwqHGF_1736476254363_completion_certificate.pdf" target="_blank" rel="noopener" class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-            <h3 class="text-navy font-bold mb-1 group-hover:text-accent transition-colors">CBRE Project Management</h3>
-            <p class="text-sm text-slate">Virtual Experience Program &mdash; commercial real estate PM</p>
+            <h3 class="text-navy font-bold mb-1 font-display group-hover:text-accent transition-colors">CBRE Project Management</h3>
+            <p class="text-sm text-charcoal/65">Virtual Experience Program &mdash; commercial real estate PM</p>
             <span class="text-xs text-accent mt-3 inline-block">View Certificate ↗</span>
           </a>
         </div>
@@ -675,48 +676,48 @@
     <section id="honors" class="py-24 px-6 bg-white section-clip">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Recognition</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Honors &amp; Awards</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Recognition</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Honors &amp; Awards</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">Honors Scholar Award</h4>
+            <h4 class="text-navy font-bold text-sm font-display">Honors Scholar Award</h4>
             <p class="text-xs text-muted mt-1">Academic Excellence</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">Presidential Scholarship</h4>
+            <h4 class="text-navy font-bold text-sm font-display">Presidential Scholarship</h4>
             <p class="text-xs text-muted mt-1">Merit-Based Award</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">Saint Dominic Scholarship</h4>
+            <h4 class="text-navy font-bold text-sm font-display">Saint Dominic Scholarship</h4>
             <p class="text-xs text-muted mt-1">University Award</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">SGA Scholarship</h4>
+            <h4 class="text-navy font-bold text-sm font-display">SGA Scholarship</h4>
             <p class="text-xs text-muted mt-1">Student Government</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-green-50 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">Dean&rsquo;s Pin</h4>
+            <h4 class="text-navy font-bold text-sm font-display">Dean&rsquo;s Pin</h4>
             <p class="text-xs text-muted mt-1">AY 23/24 &amp; 24/25</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">Freshman Recognition Award</h4>
+            <h4 class="text-navy font-bold text-sm font-display">Freshman Recognition Award</h4>
             <p class="text-xs text-muted mt-1">2023/24</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-purple-50 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">STEM Advance Grant</h4>
+            <h4 class="text-navy font-bold text-sm font-display">STEM Advance Grant</h4>
             <p class="text-xs text-muted mt-1">Summer 2025 Internship</p>
           </div>
           <div class="gs-reveal bg-cream p-5 rounded-2xl border border-warm text-center hover:shadow-md transition-all">
             <div class="w-10 h-10 mx-auto rounded-full bg-orange-50 flex items-center justify-center mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <h4 class="text-navy font-bold text-sm">CalHacks 12.0</h4>
+            <h4 class="text-navy font-bold text-sm font-display">CalHacks 12.0</h4>
             <p class="text-xs text-muted mt-1">Honorable Mention</p>
           </div>
         </div>
@@ -727,8 +728,8 @@
     <section id="teaching" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Knowledge Transfer</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Teaching Experience</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Knowledge Transfer</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Teaching Experience</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
@@ -736,9 +737,9 @@
               <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8926E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
               <span class="text-xs text-accent font-mono">Sep 2025 &ndash; Present</span>
             </div>
-            <h3 class="text-navy font-bold mb-1">SI Leader for Mathematics</h3>
-            <p class="text-sm text-slate mb-3">Caldwell University &mdash; Academic Success Center</p>
-            <p class="text-lg text-slate leading-relaxed">Facilitating supplemental instruction for Discrete Mathematics and 100-level math courses.</p>
+            <h3 class="text-navy font-bold mb-1 font-display">SI Leader for Mathematics</h3>
+            <p class="text-sm text-charcoal/65 mb-3">Caldwell University &mdash; Academic Success Center</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Facilitating supplemental instruction for Discrete Mathematics and 100-level math courses.</p>
             <a href="https://www.caldwell.edu/academic-success-center/" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-3 inline-block">Learn More ↗</a>
           </div>
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
@@ -746,9 +747,9 @@
               <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
               <span class="text-xs text-blue-500 font-mono">Jan 2024 &ndash; Present</span>
             </div>
-            <h3 class="text-navy font-bold mb-1">Peer Advisor &amp; Tutor</h3>
-            <p class="text-sm text-slate mb-3">Caldwell University &mdash; Academic Success Center</p>
-            <p class="text-lg text-slate leading-relaxed">Tutoring BU-110 (Business Analytics), CS-285 (Database), CS-260 (Data Structures), EN-111 (College Writing).</p>
+            <h3 class="text-navy font-bold mb-1 font-display">Peer Advisor &amp; Tutor</h3>
+            <p class="text-sm text-charcoal/65 mb-3">Caldwell University &mdash; Academic Success Center</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">Tutoring BU-110 (Business Analytics), CS-285 (Database), CS-260 (Data Structures), EN-111 (College Writing).</p>
             <a href="https://www.caldwell.edu/academic-success-center/" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-3 inline-block">Learn More ↗</a>
           </div>
           <div class="gs-reveal bg-white p-7 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
@@ -756,9 +757,9 @@
               <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
               <span class="text-xs text-green-600 font-mono">Feb &ndash; May 2023</span>
             </div>
-            <h3 class="text-navy font-bold mb-1">Teaching Assistant</h3>
-            <p class="text-sm text-slate mb-3">Government of Nepal &mdash; Kathmandu</p>
-            <p class="text-lg text-slate leading-relaxed">100+ hours of instruction for 120+ secondary students across STEM subjects.</p>
+            <h3 class="text-navy font-bold mb-1 font-display">Teaching Assistant</h3>
+            <p class="text-sm text-charcoal/65 mb-3">Government of Nepal &mdash; Kathmandu</p>
+            <p class="text-base md:text-lg text-charcoal/75 leading-relaxed">100+ hours of instruction for 120+ secondary students across STEM subjects.</p>
             <a href="https://merosiksha.com/" target="_blank" rel="noopener" class="text-xs text-accent hover:underline mt-3 inline-block">Learn More ↗</a>
           </div>
         </div>
@@ -769,36 +770,36 @@
     <section id="volunteer" class="py-24 px-6 bg-white section-clip">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Giving Back</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2">Service &amp; Volunteer</h2>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Giving Back</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2">Service &amp; Volunteer</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="https://www.caldwell.edu/social-justice-symposium/" target="_blank" rel="noopener" class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
-            <h3 class="text-navy font-bold mb-2 group-hover:text-accent transition-colors">Social Justice Symposium</h3>
-            <p class="text-sm text-slate">Undergraduate research presenter &mdash; policy analysis and community impact.</p>
+            <h3 class="text-navy font-bold mb-2 font-display group-hover:text-accent transition-colors">Social Justice Symposium</h3>
+            <p class="text-sm text-charcoal/65">Undergraduate research presenter &mdash; policy analysis and community impact.</p>
             <span class="text-xs text-accent mt-2 inline-block">View ↗</span>
           </a>
           <div class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-md transition-all">
-            <h3 class="text-navy font-bold mb-2">CRaCAD Research</h3>
-            <p class="text-sm text-slate">Collaborative Research and Creative Activity Day &mdash; interdisciplinary research presentation.</p>
+            <h3 class="text-navy font-bold mb-2 font-display">CRaCAD Research</h3>
+            <p class="text-sm text-charcoal/65">Collaborative Research and Creative Activity Day &mdash; interdisciplinary research presentation.</p>
           </div>
           <div class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-md transition-all">
-            <h3 class="text-navy font-bold mb-2">Midnight Runs &amp; Community Service</h3>
-            <p class="text-sm text-slate">Breast Cancer Awareness Walk, Autism Awareness, Hillside Food Bank volunteering.</p>
+            <h3 class="text-navy font-bold mb-2 font-display">Midnight Runs &amp; Community Service</h3>
+            <p class="text-sm text-charcoal/65">Breast Cancer Awareness Walk, Autism Awareness, Hillside Food Bank volunteering.</p>
           </div>
           <a href="https://www.leoclub.net/" target="_blank" rel="noopener" class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
-            <h3 class="text-navy font-bold mb-2 group-hover:text-accent transition-colors">Leo Club International</h3>
-            <p class="text-sm text-slate">5+ Countries Mega Twinning program &mdash; global youth leadership and service.</p>
+            <h3 class="text-navy font-bold mb-2 font-display group-hover:text-accent transition-colors">Leo Club International</h3>
+            <p class="text-sm text-charcoal/65">5+ Countries Mega Twinning program &mdash; global youth leadership and service.</p>
             <span class="text-xs text-accent mt-2 inline-block">Visit ↗</span>
           </a>
           <a href="https://educationusanepal.org.np/" target="_blank" rel="noopener" class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block">
-            <h3 class="text-navy font-bold mb-2 group-hover:text-accent transition-colors">EducationUSA / Fulbright Nepal</h3>
-            <p class="text-sm text-slate">Volunteer mentor guiding students through U.S. college application process.</p>
+            <h3 class="text-navy font-bold mb-2 font-display group-hover:text-accent transition-colors">EducationUSA / Fulbright Nepal</h3>
+            <p class="text-sm text-charcoal/65">Volunteer mentor guiding students through U.S. college application process.</p>
             <span class="text-xs text-accent mt-2 inline-block">Visit ↗</span>
           </a>
           <div class="gs-reveal bg-cream p-6 rounded-2xl border border-warm hover:shadow-md transition-all">
-            <h3 class="text-navy font-bold mb-2">Campus Ministry &amp; Outreach</h3>
-            <p class="text-sm text-slate">Active participant in campus wellness, interfaith dialogue, and community engagement initiatives.</p>
+            <h3 class="text-navy font-bold mb-2 font-display">Campus Ministry &amp; Outreach</h3>
+            <p class="text-sm text-charcoal/65">Active participant in campus wellness, interfaith dialogue, and community engagement initiatives.</p>
           </div>
         </div>
       </div>
@@ -808,9 +809,9 @@
     <section id="contact" class="py-24 px-6">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
-          <span class="gs-reveal text-accent text-lg tracking-widest uppercase font-semibold">Let's Talk</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-serif text-navy mt-2 mb-6">Get In Touch</h2>
-          <p class="gs-reveal text-slate text-2xl mb-10">Open to discussing operations strategy roles, analytics opportunities, research collaborations, or projects with meaningful impact.</p>
+          <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">Let's Talk</span>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Get In Touch</h2>
+          <p class="gs-reveal text-charcoal/80 text-xl md:text-2xl mb-10 leading-relaxed">Open to discussing operations strategy roles, analytics opportunities, research collaborations, or projects with meaningful impact.</p>
           <div class="space-y-5">
             <a href="mailto:ssubedi2@caldwell.edu" class="gs-reveal flex items-center gap-4 group">
               <div class="w-12 h-12 rounded-xl bg-white border border-warm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-sm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -856,7 +857,7 @@
           <div class="w-20 h-20 rounded-full bg-cream flex flex-col items-center justify-center border border-warm"><span class="text-xl font-bold text-navy">$75K</span><span class="text-xs text-muted uppercase tracking-widest">Managed</span></div>
         </div>
         <div class="text-center md:text-right">
-          <h2 class="text-2xl font-serif text-navy mb-1">Ready to collaborate?</h2>
+          <h2 class="text-2xl font-display font-bold text-navy mb-1">Ready to collaborate?</h2>
           <a href="mailto:ssubedi2@caldwell.edu" class="text-accent hover:underline">ssubedi2@caldwell.edu</a>
         </div>
       </div>
