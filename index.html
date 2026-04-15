@@ -105,10 +105,14 @@
     .nav-solid { background: rgba(240,247,250,0.95) !important; backdrop-filter: blur(12px) !important; box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important; }
 
     /* Photo */
-    .photo-card { transition: transform 0.5s cubic-bezier(.22,1,.36,1), box-shadow 0.5s; }
+    .photo-card { transition: transform 0.5s cubic-bezier(.22,1,.36,1), box-shadow 0.5s; will-change: transform; }
     .photo-card:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    .float-anim { animation: float 6s ease-in-out infinite; }
+    .float-anim { animation: float 6s ease-in-out infinite; will-change: transform; }
+    /* Perf hints */
+    .project-card-3d { will-change: transform; }
+    #cursor, #cursor-dot { will-change: transform; }
+    .marquee-track { will-change: transform; }
   </style>
 </head>
 
@@ -1004,28 +1008,42 @@
     scene.add(new THREE.Points(packetGeo, new THREE.PointsMaterial({ size: 0.35, transparent: true, opacity: 0.3, sizeAttenuation: true, color: 0x2B8C9E })));
 
     let mouse = {x:0, y:0}, scrollY = 0;
-    document.addEventListener('mousemove', e => { mouse.x=(e.clientX/window.innerWidth)*2-1; mouse.y=-(e.clientY/window.innerHeight)*2+1; });
-    window.addEventListener('scroll', () => { scrollY = window.scrollY / (document.body.scrollHeight - window.innerHeight); });
+    document.addEventListener('mousemove', e => { mouse.x=(e.clientX/window.innerWidth)*2-1; mouse.y=-(e.clientY/window.innerHeight)*2+1; }, { passive: true });
+    window.addEventListener('scroll', () => { scrollY = window.scrollY / (document.body.scrollHeight - window.innerHeight); }, { passive: true });
+
+    // Pause Three.js when page hidden or hero scrolled out of view
+    let bgVisible = true;
+    const bgObserver = new IntersectionObserver(entries => { bgVisible = entries[0].isIntersecting; }, { threshold: 0 });
+    bgObserver.observe(canvas);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) bgVisible = false; else bgVisible = true; });
 
     const clock = new THREE.Clock();
-    (function animate() {
+    const FPS = 30, interval = 1000 / FPS;
+    let lastTime = 0, frameSkip = 0;
+    (function animate(now) {
       requestAnimationFrame(animate);
+      if (!bgVisible) return;
+      if (now - lastTime < interval) return;
+      lastTime = now;
       const t = clock.getElapsedTime();
 
-      // Gentle node oscillation
+      // Gentle node oscillation — update every other frame for perf
+      frameSkip ^= 1;
       const np = nodeGeo.attributes.position.array;
-      nodes.forEach((n, i) => {
-        np[i*3+1] = n.y + Math.sin(t * 0.2 + nodePhases[i]) * 0.15;
-      });
-      nodeGeo.attributes.position.needsUpdate = true;
+      if (!frameSkip) {
+        nodes.forEach((n, i) => {
+          np[i*3+1] = n.y + Math.sin(t * 0.2 + nodePhases[i]) * 0.15;
+        });
+        nodeGeo.attributes.position.needsUpdate = true;
 
-      // Update edge positions to follow oscillating nodes
-      const ep = edgeGeo.attributes.position.array;
-      edges.forEach(([s, tgt], i) => {
-        ep[i*6] = np[s*3]; ep[i*6+1] = np[s*3+1]; ep[i*6+2] = np[s*3+2];
-        ep[i*6+3] = np[tgt*3]; ep[i*6+4] = np[tgt*3+1]; ep[i*6+5] = np[tgt*3+2];
-      });
-      edgeGeo.attributes.position.needsUpdate = true;
+        // Update edge positions to follow oscillating nodes
+        const ep = edgeGeo.attributes.position.array;
+        edges.forEach(([s, tgt], i) => {
+          ep[i*6] = np[s*3]; ep[i*6+1] = np[s*3+1]; ep[i*6+2] = np[s*3+2];
+          ep[i*6+3] = np[tgt*3]; ep[i*6+4] = np[tgt*3+1]; ep[i*6+5] = np[tgt*3+2];
+        });
+        edgeGeo.attributes.position.needsUpdate = true;
+      }
 
       // Animate data packets along edges
       const pp = packetGeo.attributes.position.array;
@@ -1045,7 +1063,7 @@
       camera.position.y += (mouse.y * 1.5 - camera.position.y) * 0.015;
       camera.lookAt(0, scrollY * 5, 0);
       renderer.render(scene, camera);
-    })();
+    })(0);
 
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -1078,7 +1096,7 @@
         });
 
       // --- LENIS ---
-      const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      const lenis = new Lenis({ duration: 1.0, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(time => lenis.raf(time * 1000));
       gsap.ticker.lagSmoothing(0);
@@ -1087,7 +1105,7 @@
       // (removed velocity tie-in to keep it steady)
 
       // --- NAV ---
-      window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('nav-solid', window.scrollY > 50));
+      window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('nav-solid', window.scrollY > 50), { passive: true });
       const mobBtn = document.getElementById('mob-btn'), mobMenu = document.getElementById('mob-menu');
       mobBtn.addEventListener('click', () => mobMenu.classList.toggle('hidden'));
 
@@ -1107,12 +1125,14 @@
       const cursor = document.getElementById('cursor'), cursorDot = document.getElementById('cursor-dot');
       let cursorX = 0, cursorY = 0;
       if (window.matchMedia('(pointer: fine)').matches) {
-        document.addEventListener('mousemove', e => { cursorX = e.clientX; cursorY = e.clientY; });
-        gsap.ticker.add(() => {
+        const cursorXTo = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power2.out' });
+        const cursorYTo = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power2.out' });
+        document.addEventListener('mousemove', e => {
+          cursorX = e.clientX; cursorY = e.clientY;
           gsap.set(cursorDot, { x: cursorX, y: cursorY });
-          gsap.to(cursor, { x: cursorX, y: cursorY, duration: 0.35, ease: 'power2.out' });
-        });
-        document.querySelectorAll('a, button, input, textarea, .photo-card, [data-magnetic]').forEach(el => {
+          cursorXTo(cursorX); cursorYTo(cursorY);
+        }, { passive: true });
+        document.querySelectorAll('a,button,input,textarea,.photo-card,[data-magnetic]').forEach(el => {
           el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
           el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
         });
@@ -1159,12 +1179,11 @@
         const heroDesc = document.getElementById('hero-desc');
         gsap.from(heroDesc, { y: 30, opacity: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
 
-        // Section reveals
-        gsap.utils.toArray('.gs-reveal').forEach(el => {
-          gsap.from(el, {
-            y: 40, opacity: 0, duration: 0.8, ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-          });
+        // Section reveals — use batch for fewer ScrollTrigger instances
+        ScrollTrigger.batch('.gs-reveal', {
+          onEnter: batch => gsap.from(batch, { y: 30, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.05 }),
+          start: 'top 88%',
+          once: true,
         });
 
         // Title clip reveals
@@ -1231,16 +1250,20 @@
 
         const observer = new IntersectionObserver(entries => {
           entries.forEach(e => {
-            if (e.isIntersecting && !running) { running = true; animate(); }
+            if (e.isIntersecting && !running) { running = true; raf = requestAnimationFrame(animate); }
             else if (!e.isIntersecting && running) { running = false; cancelAnimationFrame(raf); }
           });
         }, { threshold: 0.1 });
         observer.observe(canvas);
 
-        let t = 0;
-        function animate() {
+        let t = 0, lastVizTime = 0;
+        const vizInterval = 1000 / 30; // 30 fps cap
+        function animate(now) {
           if (!running) return;
-          t += 0.008;
+          raf = requestAnimationFrame(animate);
+          if (now - lastVizTime < vizInterval) return;
+          lastVizTime = now;
+          t += 0.016;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           const w = canvas.width, h = canvas.height;
 
@@ -1249,8 +1272,6 @@
           else if (type === 'chart') drawChart(ctx, w, h, t);
           else if (type === 'survey') drawSurvey(ctx, w, h, t);
           else if (type === 'lms') drawLMS(ctx, w, h, t);
-
-          raf = requestAnimationFrame(animate);
         }
       });
 
