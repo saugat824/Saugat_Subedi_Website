@@ -175,15 +175,15 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <div class="gs-reveal mb-8 flex items-center gap-3">
-            <span class="hero-tag font-sans font-semibold text-charcoal/70 text-sm tracking-wider bg-sand px-5 py-2.5 rounded-lg border border-warm inline-block" style="animation: tagFloat1 3s ease-in-out infinite;">Strategy</span>
-            <span class="hero-tag font-sans font-semibold text-accent text-sm tracking-wider bg-accent/10 px-5 py-2.5 rounded-lg border border-accent/30 inline-block" style="animation: tagFloat2 3.5s ease-in-out infinite;">Analytics</span>
-            <span class="hero-tag font-sans font-semibold text-navy text-sm tracking-wider bg-navy/5 px-5 py-2.5 rounded-lg border border-navy/20 inline-block" style="animation: tagFloat3 4s ease-in-out infinite;">Operations</span>
+            <span class="hero-tag font-sans font-semibold text-charcoal/70 text-sm tracking-wider bg-sand px-5 py-2.5 rounded-lg border border-warm inline-block" style="animation: tagFloat1 3s ease-in-out infinite;">Project Management</span>
+            <span class="hero-tag font-sans font-semibold text-accent text-sm tracking-wider bg-accent/10 px-5 py-2.5 rounded-lg border border-accent/30 inline-block" style="animation: tagFloat2 3.5s ease-in-out infinite;">Operations</span>
+            <span class="hero-tag font-sans font-semibold text-navy text-sm tracking-wider bg-navy/5 px-5 py-2.5 rounded-lg border border-navy/20 inline-block" style="animation: tagFloat3 4s ease-in-out infinite;">Strategy</span>
           </div>
           <h1 id="hero-name" class="text-7xl md:text-8xl lg:text-9xl font-display font-black text-navy mb-8 leading-[0.95] tracking-tight">
             Saugat<br/>Subedi
           </h1>
           <p id="hero-desc" class="text-xl md:text-2xl text-charcoal/80 mb-10 leading-relaxed max-w-lg font-sans font-normal">
-            Business analytics and operations work focused on turning <span class="text-accent font-semibold">unstructured data into decisions leaders can act on</span>. Experience spans sustainability reporting, enrollment analytics, and student government operations.
+            Incoming APM with hands-on experience in <span class="text-accent font-semibold">project delivery, operational strategy, and product analytics</span>. I scope problems, build the analysis, and own the roadmap from kickoff to stakeholder sign-off.
           </p>
           <div class="gs-reveal flex flex-wrap gap-4">
             <a href="#projects" class="nav-link px-8 py-3.5 rounded-full bg-navy text-white font-semibold hover:bg-accent transition-all shadow-lg shadow-navy/15" data-magnetic>View Projects</a>
@@ -270,9 +270,9 @@
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <span class="gs-reveal text-accent text-sm tracking-[0.25em] uppercase font-bold font-sans">About</span>
-          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Strategy, analytics <span class="italic text-accent">&amp; operations</span></h2>
-          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8] mb-6">I am a junior at Caldwell University studying Business Analytics with a minor in Management Information Systems. My work sits at the intersection of <strong class="text-navy font-semibold">strategy, process engineering, and cross-functional stakeholder management</strong>. During my 2025 internship at Eisai US, I mapped emissions data flows across 200+ vendor accounts and delivered a Scope 3 compliance roadmap that the sustainability operations team has since put into practice.</p>
-          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8]">In May 2026 I begin as Assistant Project Manager at the PSEG Institute for Sustainability Studies, leading analytics research for corporate partners. I currently serve as Chief of Staff for Caldwell's Student Government Association, where I oversee a $50K operating budget and coordinate with 35+ student organizations. My core toolkit includes Python, SQL, Tableau, and Power BI &mdash; applied in equal measure to the analysis and to the communication it demands.</p>
+          <h2 class="title-reveal text-5xl md:text-6xl font-display font-extrabold text-navy mt-2 mb-6">Project, product <span class="italic text-accent">&amp; operations</span></h2>
+          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8] mb-6">I'm a junior at Caldwell University studying Business Analytics, with a background that spans <strong class="text-navy font-semibold">project management, product analytics, and operational strategy</strong>. At Eisai US I owned the full project lifecycle for a Scope 3 emissions initiative — scoping the problem, designing the data architecture, benchmarking against peer companies, and delivering a compliance roadmap the operations team adopted.</p>
+          <p class="gs-reveal text-lg md:text-xl text-charcoal/85 leading-[1.8]">Starting May 2026 I join PSEG Institute for Sustainability Studies as Assistant Project Manager, leading research engagements with corporate partners. As Chief of Staff for Caldwell's Student Government Association I manage a $50K operating budget, coordinate 35+ student organizations, and run the governance calendar end to end. I'm most effective when strategy, data, and execution need to happen in the same room.</p>
         </div>
         <div class="space-y-6">
           <div class="gs-reveal bg-cream p-8 rounded-2xl border border-warm">
@@ -1179,11 +1179,13 @@
         const heroDesc = document.getElementById('hero-desc');
         gsap.from(heroDesc, { y: 30, opacity: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
 
-        // Section reveals — use batch for fewer ScrollTrigger instances
-        ScrollTrigger.batch('.gs-reveal', {
-          onEnter: batch => gsap.from(batch, { y: 30, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.05 }),
-          start: 'top 88%',
-          once: true,
+        // Section reveals — individual triggers to prevent right-column elements from getting stuck at opacity 0
+        gsap.utils.toArray('.gs-reveal').forEach(el => {
+          gsap.fromTo(el,
+            { y: 24, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 0.65, ease: 'power2.out',
+              scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none', once: true } }
+          );
         });
 
         // Title clip reveals
@@ -1227,13 +1229,7 @@
           });
         });
 
-        // Lightweight section fade-in (no scrub for performance)
-        gsap.utils.toArray('.section-clip').forEach(sec => {
-          gsap.from(sec, {
-            opacity: 0.9, duration: 0.6,
-            scrollTrigger: { trigger: sec, start: 'top 85%', toggleActions: 'play none none none' }
-          });
-        });
+        // section-clip: no opacity animation — was causing dimming
       }
 
       // --- PROJECT CANVAS VISUALIZATIONS ---
